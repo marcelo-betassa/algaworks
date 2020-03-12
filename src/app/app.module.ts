@@ -23,7 +23,7 @@ import { PesquisaPessoasComponent } from "./pesquisa-pessoas/pesquisa-pessoas.co
 import { LancamentoCadastroComponent } from "./lancamento-cadastro/lancamento-cadastro.component";
 import { CalendarComponent } from "./calendar/calendar.component";
 import { PessoaCadastroComponent } from "./pessoa-cadastro/pessoa-cadastro.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MessageComponent } from "./message/message.component";
 import { MessageDatepickerComponent } from "./message/message-datepicker.component";
 
@@ -66,6 +66,7 @@ export const customCurrencyMaskConfig = {
     DropdownModule,
     InputMaskModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
   ],
   providers: [

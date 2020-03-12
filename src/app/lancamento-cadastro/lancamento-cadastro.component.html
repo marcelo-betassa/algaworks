@@ -2,7 +2,7 @@
   <form #formLancamento="ngForm">
     <div class="ui-g">
       <div class="ui-g-12">
-        <h1>Novo Lançamento{{ formLancamento.value | json}}</h1>
+        <h1>Novo Lançamento{{ formLancamento.value | json }}</h1>
       </div>
       <div class="ui-g-12">
         <p-selectButton [options]="tipos" #tipo></p-selectButton>
@@ -10,7 +10,7 @@
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label for="vencimento">Vencimento</label>
         <app-calendar id="vencimento" name="vencimento" ngDefaultControl required ngModel #vencimento="ngModel"></app-calendar>
-        <app-message-datepicker [control]="vencimento" error="required" text="Informe a data de vencimento."></app-message-datepicker>
+        <app-message [control]="vencimento" error="required" text="Informe a data de vencimento."></app-message>
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label for="tipoLancamento">{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>

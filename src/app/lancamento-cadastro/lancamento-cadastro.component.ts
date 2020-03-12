@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
+
+
 
 @Component({
   selector: "app-lancamento-cadastro",
@@ -38,7 +39,6 @@ export class LancamentoCadastroComponent implements OnInit {
 
   validaSeValorZero() {
     if (this.valor === "0,00" || this.valor === "" || this.valor === undefined) {
-      console.log("0,00 ou ' '");
       return true;
     }
     console.log("com valor" , this.valor);

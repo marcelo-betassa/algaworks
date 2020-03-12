@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, OnInit, Input } from "@angular/core";
+import { FormControl, Form, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-message-datepicker",
@@ -24,13 +24,19 @@ export class MessageDatepickerComponent {
   error: string;
 
   @Input()
-  control: FormControl;
+  controlName;
+
+  @Input()
+  form: FormGroup;
 
   @Input()
   text: string;
 
   isVazio() {
-    return this.control.hasError(this.error) && this.control.dirty;
+    // console.log(this.form);
+    console.log(this.form.get([this.controlName])?.hasError(this.error));
+    return this.form.get([this.controlName])?.hasError(this.error) && this.form.get([this.controlName]).dirty;
+
   }
 
 
