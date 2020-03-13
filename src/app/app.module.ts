@@ -26,6 +26,8 @@ import { PessoaCadastroComponent } from "./pessoa-cadastro/pessoa-cadastro.compo
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MessageComponent } from "./message/message.component";
 import { MessageDatepickerComponent } from "./message/message-datepicker.component";
+import { LancamentosGridComponent } from "./lancamentos-grid/lancamentos-grid.component";
+import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 
 registerLocaleData(localePt);
 
@@ -51,7 +53,9 @@ export const customCurrencyMaskConfig = {
     CalendarComponent,
     PessoaCadastroComponent,
     MessageComponent,
-    MessageDatepickerComponent
+    MessageDatepickerComponent,
+    LancamentosGridComponent,
+    PessoasGridComponent
   ],
   imports: [
     BrowserModule,

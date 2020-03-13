@@ -1,0 +1,43 @@
+.col-valor-header {
+  width: 120px;
+}
+.col-valor-content {
+  text-align: right;
+}
+
+.col-data-header {
+  width: 120px;
+}
+
+.col-data-content {
+  text-align: center;
+}
+
+.ui-button-icon-only {
+  color: #fff;
+}
+
+.ui-button-icon-only:active {
+  color: #007ad9;
+  background-color: #fff;
+}
+
+.nohover:hover , .nohover > span:hover {
+  color: #007ad9;
+  background-color: #fff;
+}
+
+.nohover:active , .nohover > span:active {
+  color: #fff;
+  background-color: #007ad9;
+}
+
+.col-acoes {
+  width: 90px;
+  text-align: center;
+
+}
+
+.marginLeft {
+  margin: 0 .25em!important;
+}
