@@ -24,7 +24,7 @@
       </div>
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label for="valor">Valor</label>
-        <input pInputText type="text" name="valor" currencyMask  required id="valor" ngModel #valor="ngModel">
+        <input pInputText type="text" name="valor" currencyMask required id="valor" ngModel #valor="ngModel">
         <app-message *ngIf="validaSeValorZero()"  [control]="valor" error="required" text="Informe um valor."></app-message>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
