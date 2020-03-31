@@ -1,5 +1,6 @@
 import { NgModule, LOCALE_ID } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
 import { LancamentosGridComponent } from "./lancamentos-grid/lancamentos-grid.component";
 import { PesquisaLancamentosComponent } from "./pesquisa-lancamentos/pesquisa-lancamentos.component";
 import { LancamentoCadastroComponent } from "./lancamento-cadastro/lancamento-cadastro.component";
@@ -36,6 +37,7 @@ export const customCurrencyMaskConfig = {
     PesquisaLancamentosComponent
   ],
   imports: [
+    HttpClientModule,
     CommonModule,
     InputTextModule,
     ButtonModule,
