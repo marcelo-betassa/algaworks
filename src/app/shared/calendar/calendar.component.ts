@@ -1,4 +1,4 @@
-import { Component, OnInit, forwardRef } from "@angular/core";
+import { Component, OnInit, forwardRef, Input } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 const noop = () => {
@@ -17,6 +17,9 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACESSOR: any = {
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACESSOR]
 })
 export class CalendarComponent implements OnInit, ControlValueAccessor {
+
+  @Input()
+  inputStyle: any;
 
   get value(): any {
     return this.innerValue;

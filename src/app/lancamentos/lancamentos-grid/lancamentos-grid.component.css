@@ -41,3 +41,13 @@
 .marginLeft {
   margin: 0 .25em!important;
 }
+
+.ui-button:hover {
+  color: #007ad9 !important;
+  background-color: #fff !important;
+}
+
+.ui-button:active {
+  color: #fff !important;
+  background-color: #007ad9 !important;
+}
