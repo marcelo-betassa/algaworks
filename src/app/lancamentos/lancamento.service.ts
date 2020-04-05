@@ -10,7 +10,7 @@ export class LancamentoService {
 
   lancamentoURL = "http://localhost:8080/lancamentos";
 
-  constructor( private httpClient: HttpClient) { }
+  constructor( private http: HttpClient) { }
 
   pesquisar(filtro: LancamentoFiltro ) {
     let params = new HttpParams();
@@ -33,6 +33,6 @@ export class LancamentoService {
       params = params.set("dataVencimentoAte", moment(filtro.dataVencimentoFim).format("YYYY-MM-DD"));
     }
 
-    return this.httpClient.get(`${this.lancamentoURL}?resumo`, { headers, params });
+    return this.http.get(`${this.lancamentoURL}?resumo`, { headers, params });
   }
 }
