@@ -17,6 +17,7 @@ export class PesquisaPessoasComponent implements OnInit {
   constructor( private pessoaService: PessoaService) {}
 
   ngOnInit() {
+
   }
 
   pesquisarPessoa(pagina = 0) {
@@ -30,6 +31,17 @@ export class PesquisaPessoasComponent implements OnInit {
         };
         this.totalRegistros = result.total;
         this.pessoas = result.pessoas;
+      },
+      (error: any) => {
+        console.log("# erro...", error);
+      }
+    );
+  }
+
+  listarPessoas() {
+    this.pessoaService.listarPessoas().subscribe(
+      (response: any) => {
+        this.pessoas = response.content;
       },
       (error: any) => {
         console.log("# erro...", error);
