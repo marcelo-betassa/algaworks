@@ -15,13 +15,11 @@ export class LancamentoService {
   pesquisar(filtro: LancamentoFiltro ) {
     let params = new HttpParams();
     const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
-    console.log("# filtro ", filtro);
 
     params = params.set("page", filtro.pagina.toString());
     params = params.set("size", filtro.itensPorPagina.toString());
 
     if (filtro.descricao) {
-      console.log("# passou aqui ");
       params = params.set("descricao" , filtro.descricao);
     }
 
@@ -35,4 +33,11 @@ export class LancamentoService {
 
     return this.http.get(`${this.lancamentoURL}?resumo`, { headers, params });
   }
+
+  excluir(codigo: number): void {
+    const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
+    this.http.delete(`${this.lancamentoURL}/${codigo}`, { headers });
+
+  }
+
 }
