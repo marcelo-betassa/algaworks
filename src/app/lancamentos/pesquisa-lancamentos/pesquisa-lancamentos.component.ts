@@ -3,6 +3,7 @@ import { LancamentoService } from "./../lancamento.service";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { LazyLoadEvent } from "primeng/api/public_api";
 import { Table } from "primeng/table/table";
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: "app-pesquisa-lancamentos",
@@ -18,7 +19,10 @@ export class PesquisaLancamentosComponent implements OnInit {
   @ViewChild("tabela", { static: true})
   tabela: Table;
 
-  constructor( private lancamentoService: LancamentoService ) { }
+  constructor(
+    private lancamentoService: LancamentoService,
+    private toasty: ToastyService
+     ) { }
 
   ngOnInit(): void {
 
@@ -44,10 +48,23 @@ export class PesquisaLancamentosComponent implements OnInit {
   }
 
   excluir(lancamento: any) {
-    this.lancamentoService.excluir(lancamento);
-    console.log(`Exclusão do lançamento ${lancamento} realizada com sucesso!`);
-    this.tabela.reset();
-    }
+    this.lancamentoService.excluir(lancamento).subscribe(
+      (request: any) => {
+        console.log(`Exclusão do lançamento ${lancamento} realizada com sucesso!`);
+        if (this.tabela.first === 0) {
+          this.pesquisar();
+        } else {
+          this.tabela.reset();
+        }
+        this.toasty.success(`Lançamento ${lancamento} excluido com sucesso!` );
+      },
+      (error: any) => {
+        console.log("# erro... ", error);
+      }
+    );
+
+
+  }
 
 
   aoMudarPagina(event: LazyLoadEvent) {

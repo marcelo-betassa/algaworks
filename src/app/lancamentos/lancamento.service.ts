@@ -34,9 +34,9 @@ export class LancamentoService {
     return this.http.get(`${this.lancamentoURL}?resumo`, { headers, params });
   }
 
-  excluir(codigo: number): void {
+  excluir(codigo: number) {
     const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
-    this.http.delete(`${this.lancamentoURL}/${codigo}`, { headers });
+    return this.http.delete(`${this.lancamentoURL}/${codigo}`, { headers });
 
   }
 
