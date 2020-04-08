@@ -1,9 +1,10 @@
 import { LancamentoFiltro } from "./../lancamento-filtro";
 import { LancamentoService } from "./../lancamento.service";
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { LazyLoadEvent } from "primeng/api/public_api";
+import { LazyLoadEvent, ConfirmationService } from "primeng/api";
 import { Table } from "primeng/table/table";
-import { ToastyService } from 'ng2-toasty';
+import { ToastyService } from "ng2-toasty";
+import { ErrorHandlerService } from "src/app/core/error-handler.service";
 
 @Component({
   selector: "app-pesquisa-lancamentos",
@@ -21,7 +22,9 @@ export class PesquisaLancamentosComponent implements OnInit {
 
   constructor(
     private lancamentoService: LancamentoService,
-    private toasty: ToastyService
+    private toasty: ToastyService,
+    private confirmationService: ConfirmationService,
+    private errorHandler: ErrorHandlerService
      ) { }
 
   ngOnInit(): void {
@@ -41,10 +44,19 @@ export class PesquisaLancamentosComponent implements OnInit {
         this.lancamentos = result.lancamentos;
       },
       (error: any) => {
-        console.log("erro: ", error.message);
+       this.errorHandler.handle(error);
 
       }
     );
+  }
+
+  confirmarExclusao(lancamento: any) {
+    this.confirmationService.confirm({
+      message: "Tem certeza que deseja excluir este lançamento?",
+      accept: () => {
+        this.excluir(lancamento);
+      }
+    });
   }
 
   excluir(lancamento: any) {
@@ -59,7 +71,7 @@ export class PesquisaLancamentosComponent implements OnInit {
         this.toasty.success(`Lançamento ${lancamento} excluido com sucesso!` );
       },
       (error: any) => {
-        console.log("# erro... ", error);
+        this.errorHandler.handle(error);
       }
     );
 
