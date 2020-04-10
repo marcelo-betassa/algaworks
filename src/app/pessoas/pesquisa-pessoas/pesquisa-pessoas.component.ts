@@ -1,7 +1,11 @@
 import { PessoaService } from "./../pessoa.service";
 import { PessoaFiltro } from "./../pessoa-filtro";
-import { Component, OnInit } from "@angular/core";
-import { LazyLoadEvent } from "primeng/api/public_api";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { LazyLoadEvent, ConfirmationService } from "primeng/api";
+import { Table } from 'primeng/table/table';
+import { ToastyService } from 'ng2-toasty';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+
 
 @Component({
   selector: "app-pesquisa-pessoas",
@@ -13,8 +17,15 @@ export class PesquisaPessoasComponent implements OnInit {
   totalRegistros = 0;
   pFiltro = new PessoaFiltro();
   pessoas = [];
+  @ViewChild("tabela", { static: true})
+  tabela: Table;
 
-  constructor( private pessoaService: PessoaService) {}
+  constructor(
+    private pessoaService: PessoaService,
+    private toasty: ToastyService,
+    private confirmationService: ConfirmationService,
+    private errorHandler: ErrorHandlerService
+    ) {}
 
   ngOnInit() {
 
@@ -33,7 +44,7 @@ export class PesquisaPessoasComponent implements OnInit {
         this.pessoas = result.pessoas;
       },
       (error: any) => {
-        console.log("# erro...", error);
+        this.errorHandler.handle(error);
       }
     );
   }
@@ -44,7 +55,49 @@ export class PesquisaPessoasComponent implements OnInit {
         this.pessoas = response.content;
       },
       (error: any) => {
-        console.log("# erro...", error);
+        this.errorHandler.handle(error);
+      }
+    );
+  }
+
+  confirmarExclusao(pessoa: any) {
+    this.confirmationService.confirm({
+      message: "Tem certeza que deseja excluir esta pessoa?",
+      accept: () => {
+        this.excluir(pessoa);
+      }
+    });
+  }
+
+  excluir(pessoa: any) {
+    this.pessoaService.excluirPessoa(pessoa).subscribe(
+      (request: any) => {
+        console.log(`Excluindo pessoa de código ${pessoa}`);
+        if (this.tabela.first === 0) {
+          this.pesquisarPessoa();
+        } else {
+          this.tabela.reset();
+        }
+        this.toasty.success(`Pessoa de codigo ${pessoa} excluida com sucesso!`);
+      },
+      (error: any) => {
+        this.errorHandler.handle(error);
+      }
+    );
+  }
+
+  mudarStatus(pessoa: any, status:boolean ) {
+     console.log(status);
+    let novoStatus = !status;
+    this.pessoaService.mudarStatus( pessoa , novoStatus).subscribe(
+      (response: any) => {
+        const acao = novoStatus ? "ativada" : "inativada";
+          //pessoa.ativo = novoStatus;
+          this.pesquisarPessoa();
+          this.toasty.success(`Alterado Status para ${acao} com sucesso!`);
+      },
+      (error: any) => {
+        this.errorHandler.handle(error);
       }
     );
   }

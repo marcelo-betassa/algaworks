@@ -30,4 +30,16 @@ export class PessoaService {
   return this.http.get(`${this.pessoaURL}` , {headers});
  }
 
+ excluirPessoa(codigo: number) {
+  const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
+  return this.http.delete(`${this.pessoaURL}/${codigo}`, { headers });
+
+ }
+
+ mudarStatus( codigo: number , ativo: boolean) {
+  const headers = new HttpHeaders({"Authorization": "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==", "Content-Type": "application/json" });
+  console.log(headers);
+  return this.http.put(`${this.pessoaURL}/${codigo}/ativo`, ativo, { headers });
+ }
+
 }
