@@ -1,3 +1,4 @@
+import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { Observable } from "rxjs";
 import localePt from "@angular/common/locales/pt";
 import { registerLocaleData } from "@angular/common";
@@ -5,7 +6,6 @@ import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { NavbarComponent } from "./navbar/NavbarComponent";
 import { ErrorHandlerService } from "./error-handler.service";
-import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { ToastyModule } from "ng2-toasty";
 import { LancamentoService } from "../lancamentos/lancamento.service";
 import { PessoaService } from "../pessoas/pessoa.service";

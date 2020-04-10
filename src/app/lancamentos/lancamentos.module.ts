@@ -1,4 +1,4 @@
-import { NgModule, LOCALE_ID } from "@angular/core";
+import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { LancamentosGridComponent } from "./lancamentos-grid/lancamentos-grid.component";

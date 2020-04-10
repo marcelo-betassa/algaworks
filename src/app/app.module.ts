@@ -1,7 +1,7 @@
 import { Observable } from "rxjs";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { FormsModule } from "@angular/forms";
 import { LancamentosModule } from "./lancamentos/lancamentos.module";
@@ -26,8 +26,11 @@ import { CoreModule } from "./core/core.module";
     CoreModule,
     SharedModule
   ],
-
   providers: [],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+
 
   bootstrap: [AppComponent]
 })
