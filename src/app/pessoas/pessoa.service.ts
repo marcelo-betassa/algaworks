@@ -37,7 +37,7 @@ export class PessoaService {
  }
 
  mudarStatus( codigo: number , ativo: boolean) {
-  const headers = new HttpHeaders({"Authorization": "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==", "Content-Type": "application/json" });
+  const headers = new HttpHeaders({Authorization: "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==", "Content-Type": "application/json" });
   console.log(headers);
   return this.http.put(`${this.pessoaURL}/${codigo}/ativo`, ativo, { headers });
  }

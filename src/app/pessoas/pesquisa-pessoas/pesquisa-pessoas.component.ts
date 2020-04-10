@@ -2,9 +2,9 @@ import { PessoaService } from "./../pessoa.service";
 import { PessoaFiltro } from "./../pessoa-filtro";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { LazyLoadEvent, ConfirmationService } from "primeng/api";
-import { Table } from 'primeng/table/table';
-import { ToastyService } from 'ng2-toasty';
-import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { Table } from "primeng/table/table";
+import { ToastyService } from "ng2-toasty";
+import { ErrorHandlerService } from "src/app/core/error-handler.service";
 
 
 @Component({
@@ -86,15 +86,15 @@ export class PesquisaPessoasComponent implements OnInit {
     );
   }
 
-  mudarStatus(pessoa: any, status:boolean ) {
+  mudarStatus(pessoa: any, status: boolean ) {
      console.log(status);
-    let novoStatus = !status;
-    this.pessoaService.mudarStatus( pessoa , novoStatus).subscribe(
+     const novoStatus = !status;
+     this.pessoaService.mudarStatus( pessoa , novoStatus).subscribe(
       (response: any) => {
         const acao = novoStatus ? "ativada" : "inativada";
-          //pessoa.ativo = novoStatus;
-          this.pesquisarPessoa();
-          this.toasty.success(`Alterado Status para ${acao} com sucesso!`);
+          // pessoa.ativo = novoStatus;
+        this.pesquisarPessoa();
+        this.toasty.success(`Alterado Status para ${acao} com sucesso!`);
       },
       (error: any) => {
         this.errorHandler.handle(error);
