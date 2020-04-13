@@ -1,49 +1,49 @@
 <div class="container">
-  <form #formLancamento="ngForm">
+  <form #formLancamento="ngForm" (ngSubmit)="salvarLancamento(formLancamento)">
     <div class="ui-g">
       <div class="ui-g-12">
         <h1>Novo Lançamento{{ formLancamento.value | json }}</h1>
       </div>
       <div class="ui-g-12">
-        <p-selectButton [options]="tipos" #tipo></p-selectButton>
+        <p-selectButton [options]="tipos" name="tipo" [(ngModel)]="lancamento.tipoLancamento" #tipo></p-selectButton>
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label for="vencimento">Vencimento</label>
-        <app-calendar id="vencimento" name="vencimento" ngDefaultControl required ngModel #vencimento="ngModel"></app-calendar>
+        <app-calendar id="vencimento" name="vencimento" ngDefaultControl required [(ngModel)]="lancamento.dataVencimento" #vencimento="ngModel"></app-calendar>
         <app-message [control]="vencimento" error="required" text="Informe a data de vencimento."></app-message>
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label for="tipoLancamento">{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
-        <app-calendar ngModel id="tipoLancamento" name="tipoLancamento" ngDefaultControl #tipoLancamento="ngModel"></app-calendar>
+        <app-calendar [(ngModel)]="lancamento.dataPagamento" id="tipoLancamento" name="tipoLancamento" ngDefaultControl #tipoLancamento="ngModel"></app-calendar>
       </div>
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label for="descricao">Descrição</label>
-        <input pInputText type="text" name="descricao" id="descricao" required minlength="5" ngModel #descricao="ngModel">
+        <input pInputText type="text" name="descricao" id="descricao" required minlength="5" [(ngModel)]="lancamento.descricao" #descricao="ngModel">
         <app-message [control]="descricao" error="required" text="Informe uma descrição."></app-message>
         <app-message [control]="descricao" error="minlength" text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres."></app-message>
       </div>
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label for="valor">Valor</label>
-        <input pInputText type="text" name="valor" currencyMask placeholder="0,00" required id="valor" ngModel #valor="ngModel">
+        <input pInputText type="text" name="valor" currencyMask placeholder="0,00" required id="valor" [(ngModel)]="lancamento.valor" #valor="ngModel">
         <app-message *ngIf="validaSeValorZero()"  [control]="valor" error="required" text="Informe um valor."></app-message>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label for="categoria">Categoria</label>
         <p-dropdown [options]="categorias" placeholder="Selecione" name="categoria"
-         ngModel required id="categoria" #categoria="ngModel"></p-dropdown>
+         [(ngModel)]="lancamento?.categoria.codigo" required id="categoria" #categoria="ngModel"></p-dropdown>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label for="pessoa">Pessoa</label>
-        <p-dropdown [options]="pessoas" [filter]="true" placeholder="Selecione" name="pessoa" ngModel required id="pessoa" #pessoa="ngModel"></p-dropdown>
+        <p-dropdown [options]="pessoas" [filter]="true" placeholder="Selecione" name="pessoa" [(ngModel)]="lancamento?.pessoa.codigo" required id="pessoa" #pessoa="ngModel"></p-dropdown>
       </div>
       <div class="ui-g-12 ui-fluid">
         <label for="observacao">Observação</label>
-        <textarea pInputTextarea rows="3" name="observacao" ngModel id="observacao" #observacao="ngModel"></textarea>
+        <textarea pInputTextarea rows="3" name="observacao" [(ngModel)]="lancamento.observacao" id="observacao" #observacao="ngModel"></textarea>
       </div>
       <div class="ui-g-12">
           <button [disabled]="formLancamento.invalid" pButton label="Salvar" type="submit"></button>
           <button pButton class="margin-left ui-button-info" label="Novo" type="button"></button>
-          <a class="margin-left nostyle" href="#">Voltar para a pesquisa</a>
+          <a class="margin-left nostyle" href="javascript:;">Voltar para a pesquisa</a>
       </div>
     </div>
   </form>

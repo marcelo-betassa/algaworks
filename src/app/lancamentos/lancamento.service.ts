@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { LancamentoFiltro } from "./lancamento-filtro";
 import * as moment from "moment";
+import { Lancamento } from "../core/model";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -32,6 +34,16 @@ export class LancamentoService {
     }
 
     return this.http.get(`${this.lancamentoURL}?resumo`, { headers, params });
+  }
+
+  adicionarLancamento(lancamento: Lancamento): Observable<any> {
+    const headers = new HttpHeaders({Authorization: "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==", "Content-Type": "application/json" });
+
+    lancamento.dataVencimento =  moment(lancamento.dataVencimento).format("DD/MM/YYYY");
+    lancamento.dataPagamento =  moment(lancamento.dataPagamento).format("DD/MM/YYYY");
+    console.log(JSON.stringify(lancamento));
+    return this.http.post(`${this.lancamentoURL}`, JSON.stringify(lancamento), { headers });
+
   }
 
   excluir(codigo: number) {
