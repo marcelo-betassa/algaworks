@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { CategoriaService } from "src/app/categorias/categoria.service";
+import { ErrorHandlerService } from "src/app/core/error-handler.service";
+import { PessoaService } from "src/app/pessoas/pessoa.service";
 
 
 
@@ -9,26 +12,28 @@ import { Component, OnInit } from "@angular/core";
 })
 export class LancamentoCadastroComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private categoriaService: CategoriaService,
+    private errorHandler: ErrorHandlerService,
+    private pessoaService: PessoaService
+  ) { }
 
   vencimento: any;
   valor: any;
+  pessoas: any = [];
+  categorias: any = [];
+  categoria: string;
 
   tipos: any = [
-    {label: "Receita", value: "RECEITA"},
-    {label: "Despesa", value: "DESPESA"}
+    { label: "Receita", value: "RECEITA" },
+    { label: "Despesa", value: "DESPESA" }
   ];
 
-  categorias: any = [
-    {label: "Alimentação", value: 1},
-    {label: "Transporte", value: 2}
-  ];
+  ngOnInit(): void {
+    this.carregarPessoas();
+    this.carregarCategorias();
+  }
 
-  pessoas: any = [
-    {label: "Marcelo Henrique Betassa", value: 1},
-    {label: "Flávia Akemi Hino", value: 2},
-    {label: "Alessandro Scarpin", value: 3}
-  ];
 
   validaDataVazia() {
     if (this.vencimento === "") {
@@ -41,10 +46,34 @@ export class LancamentoCadastroComponent implements OnInit {
     if (this.valor === "0,00" || this.valor === "" || this.valor === undefined) {
       return true;
     }
-    console.log("com valor" , this.valor);
+    console.log("com valor", this.valor);
     return false;
   }
 
-  ngOnInit(): void {}
+  carregarCategorias() {
+    this.categoriaService.listarCategorias().subscribe(
+      (categoria: any) => {
+        this.categorias = categoria.map( c => {
+          return {label: c.nome, value: c.codigo};
+        });
+      },
+      (error: any) => {
+        this.errorHandler.handle(error);
+      }
+    );
+  }
+
+  carregarPessoas() {
+    this.pessoaService.listarPessoas().subscribe(
+      (pessoa: any) => {
+        this.pessoas = pessoa.content.map( p => {
+          return {label: p.nome, value: p.codigo};
+        });
+      },
+      (error: any) => {
+        this.errorHandler.handle(error);
+      }
+    );
+  }
 
 }
