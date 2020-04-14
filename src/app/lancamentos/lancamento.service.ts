@@ -41,7 +41,6 @@ export class LancamentoService {
 
     lancamento.dataVencimento =  moment(lancamento.dataVencimento).format("DD/MM/YYYY");
     lancamento.dataPagamento =  moment(lancamento.dataPagamento).format("DD/MM/YYYY");
-    console.log(JSON.stringify(lancamento));
     return this.http.post(`${this.lancamentoURL}`, JSON.stringify(lancamento), { headers });
 
   }
