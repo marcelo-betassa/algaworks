@@ -1,6 +1,8 @@
+import { Pessoa } from "./../core/model";
 import { PessoaFiltro } from "./pessoa-filtro";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -23,6 +25,11 @@ export class PessoaService {
   }
 
   return this.http.get(`${this.pessoaURL}`, {headers , params});
+ }
+
+ adicionarPessoa(pessoa: Pessoa): Observable<any> {
+  const headers = new HttpHeaders({Authorization: "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==", "Content-Type": "application/json" });
+  return this.http.post(`${this.pessoaURL}`, JSON.stringify(pessoa), { headers });
  }
 
  listarPessoas() {
