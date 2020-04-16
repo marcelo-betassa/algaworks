@@ -48,7 +48,7 @@
             <td [ngStyle]="{color: lancamento.tipo ==='DESPESA' ? 'red' : 'blue' }" class="col-valor-content">
               {{lancamento.valor | currency : 'BRL':'symbol' : '1.2-2' }}</td>
             <td class="col-acoes">
-              <a class="nohover marginLeft" pTooltip="Editar" tooltipPosition="top" pButton icon="pi pi-pencil"></a>
+              <a class="nohover marginLeft" pTooltip="Editar" [routerLink]="['/lancamentos', lancamento.codigo]" tooltipPosition="top" pButton icon="pi pi-pencil"></a>
               <button class="marginLeft ui-button" pTooltip="Excluir" tooltipPosition="top" pButton icon="pi pi-trash" (click)="confirmarExclusao(lancamento.codigo)"></button>
             </td>
           </tr>
@@ -56,7 +56,7 @@
       </p-table>
     </div>
     <div class="ui-g-12">
-      <a class="nohover" pButton label="Novo Lançamento"></a>
+      <a class="nohover" pButton  routerLink="/lancamentos/novo" label="Novo Lançamento"></a>
     </div>
   </div>
 </div>

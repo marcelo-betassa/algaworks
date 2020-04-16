@@ -10,6 +10,7 @@ import { ToastyModule } from "ng2-toasty";
 import { LancamentoService } from "../lancamentos/lancamento.service";
 import { PessoaService } from "../pessoas/pessoa.service";
 import { ConfirmationService } from "primeng/api";
+import { RouterModule } from "@angular/router";
 
 registerLocaleData(localePt);
 
@@ -19,11 +20,12 @@ registerLocaleData(localePt);
     CommonModule,
     ConfirmDialogModule,
     ToastyModule.forRoot(),
+    RouterModule
   ],
   exports: [
     NavbarComponent,
     ConfirmDialogModule,
-    ToastyModule
+    ToastyModule,
   ],
   providers: [
     ErrorHandlerService,

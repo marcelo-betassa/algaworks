@@ -16,6 +16,7 @@ import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputMaskModule } from "primeng/inputmask";
 import { SharedModule } from "../shared/shared.module";
 import { NgxCurrencyModule } from "ngx-currency";
+import { RouterModule } from "@angular/router";
 
 
 export const customCurrencyMaskConfig = {
@@ -42,6 +43,7 @@ export const customCurrencyMaskConfig = {
     InputTextModule,
     ButtonModule,
     TableModule,
+    RouterModule,
     TooltipModule,
     InputTextareaModule,
     SelectButtonModule,

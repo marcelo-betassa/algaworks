@@ -6,6 +6,7 @@ import { Lancamento } from "src/app/core/model";
 import { FormControl, NgForm } from "@angular/forms";
 import { LancamentoService } from "../lancamento.service";
 import { ToastyService } from "ng2-toasty";
+import { ActivatedRoute } from "@angular/router";
 
 
 
@@ -21,7 +22,8 @@ export class LancamentoCadastroComponent implements OnInit {
     private errorHandler: ErrorHandlerService,
     private lancamentoService: LancamentoService,
     private toasty: ToastyService,
-    private pessoaService: PessoaService
+    private pessoaService: PessoaService,
+    private route: ActivatedRoute
   ) { }
 
   vencimento: any;
@@ -37,22 +39,58 @@ export class LancamentoCadastroComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    const codigoLancamento = this.route.snapshot.params.codigo;
+    if (codigoLancamento) {
+      this.carregarLancamentoPorCodigo(codigoLancamento);
+    }
     this.carregarPessoas();
     this.carregarCategorias();
   }
 
-  salvarLancamento( form: NgForm) {
+  carregarLancamentoPorCodigo(codigo: number) {
+    this.lancamentoService.buscarPorCodigo(codigo).then(
+      (response: any) => {
+        this.lancamento = response;
+      },
+      (error: any) => {
+        this.errorHandler.handle(error);
+      }
+    );
+  }
+
+  salvarLancamento(form: NgForm) {
+    if (this.editando) {
+      this.atualizarLancamento(form);
+    } else {
+      this.adicionarLancamento(form);
+    }
+  }
+
+  adicionarLancamento( form: NgForm) {
     this.lancamentoService.adicionarLancamento(this.lancamento).subscribe(
       (response: any) => {
         console.log(response);
         this.toasty.success("Lancamento adicionado com sucesso!");
         form.reset();
         this.lancamento = new Lancamento();
+        this.lancamento.tipoLancamento = "RECEITA";
       },
       (error: any) => {
         this.errorHandler.handle(error);
       }
 
+    );
+  }
+
+  atualizarLancamento(form: NgForm) {
+    this.lancamentoService.atualizarLancamento(this.lancamento).subscribe(
+      (response: any) => {
+        this.lancamento = response;
+        this.toasty.success("Lançamento atualizado com sucesso!");
+      },
+      (error: any) => {
+        this.errorHandler.handle(error);
+      }
     );
   }
 
@@ -95,6 +133,10 @@ export class LancamentoCadastroComponent implements OnInit {
         this.errorHandler.handle(error);
       }
     );
+  }
+
+  get editando() {
+    return Boolean(this.lancamento.codigo);
   }
 
 }

@@ -1,3 +1,4 @@
+import { RouterModule } from "@angular/router";
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { PesquisaPessoasComponent } from "./pesquisa-pessoas/pesquisa-pessoas.component";
@@ -29,6 +30,7 @@ import { SharedModule } from "../shared/shared.module";
     CommonModule,
     InputTextModule,
     ButtonModule,
+    RouterModule,
     TableModule,
     TooltipModule,
     InputTextareaModule,
