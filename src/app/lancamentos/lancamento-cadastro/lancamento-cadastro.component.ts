@@ -48,14 +48,12 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   carregarLancamentoPorCodigo(codigo: number) {
-    this.lancamentoService.buscarPorCodigo(codigo).then(
-      (response: any) => {
+    this.lancamentoService.buscarPorCodigo(codigo)
+    .then( (response: any) => {
         this.lancamento = response;
-      },
-      (error: any) => {
+      }).catch((error: any) => {
         this.errorHandler.handle(error);
-      }
-    );
+      });
   }
 
   salvarLancamento(form: NgForm) {

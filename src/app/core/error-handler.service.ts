@@ -11,7 +11,6 @@ export class ErrorHandlerService {
 
   handle(errorResponse: any) {
     let msg: string;
-    console.log("#erroResponse", errorResponse);
     if (typeof errorResponse === "string") {
       msg = errorResponse;
     } else if (errorResponse instanceof HttpErrorResponse && errorResponse.status >= 400 && errorResponse.status <= 499) {
@@ -22,16 +21,16 @@ export class ErrorHandlerService {
               msg = obj.mensagemUsuario;
             }
           } catch (error) {
-            console.log("# erro...", error);
+            console.log("errorResponse #", error);
           }
         });
       } else {
         msg = "Ocorreu um erro ao processar a sua solicitação";
-        console.log("# erro...", errorResponse);
+        console.log("errorResponse #", errorResponse);
       }
     } else {
       msg = "Erro ao processar serviço remoto. Tente novamente!";
-      console.log("# erro...", errorResponse);
+      console.log("errorResponse #", errorResponse);
     }
     this.toastyService.error(msg);
   }
