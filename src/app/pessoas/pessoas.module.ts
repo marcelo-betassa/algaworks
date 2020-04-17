@@ -41,9 +41,6 @@ import { SharedModule } from "../shared/shared.module";
     FormsModule,
     SharedModule
   ],
-  exports: [
-    PessoaCadastroComponent,
-    PesquisaPessoasComponent
-  ]
+  exports: []
 })
 export class PessoasModule { }

@@ -6,7 +6,8 @@ import { Lancamento } from "src/app/core/model";
 import { FormControl, NgForm } from "@angular/forms";
 import { LancamentoService } from "../lancamento.service";
 import { ToastyService } from "ng2-toasty";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Title } from "@angular/platform-browser";
 
 
 
@@ -23,7 +24,9 @@ export class LancamentoCadastroComponent implements OnInit {
     private lancamentoService: LancamentoService,
     private toasty: ToastyService,
     private pessoaService: PessoaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private title: Title
   ) { }
 
   vencimento: any;
@@ -39,6 +42,7 @@ export class LancamentoCadastroComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.title.setTitle("Novo Lançamento");
     const codigoLancamento = this.route.snapshot.params.codigo;
     if (codigoLancamento) {
       this.carregarLancamentoPorCodigo(codigoLancamento);
@@ -51,6 +55,7 @@ export class LancamentoCadastroComponent implements OnInit {
     this.lancamentoService.buscarPorCodigo(codigo)
     .then( (response: any) => {
         this.lancamento = response;
+        this.atualizaTitle();
       }).catch((error: any) => {
         this.errorHandler.handle(error);
       });
@@ -69,9 +74,10 @@ export class LancamentoCadastroComponent implements OnInit {
       (response: any) => {
         console.log(response);
         this.toasty.success("Lancamento adicionado com sucesso!");
-        form.reset();
-        this.lancamento = new Lancamento();
-        this.lancamento.tipoLancamento = "RECEITA";
+        // form.reset();
+        // this.lancamento = new Lancamento();
+        // this.lancamento.tipoLancamento = "RECEITA";
+        this.router.navigate(["/lancamentos", response.codigo]);
       },
       (error: any) => {
         this.errorHandler.handle(error);
@@ -85,6 +91,7 @@ export class LancamentoCadastroComponent implements OnInit {
       (response: any) => {
         this.lancamento = response;
         this.toasty.success("Lançamento atualizado com sucesso!");
+        this.atualizaTitle();
       },
       (error: any) => {
         this.errorHandler.handle(error);
@@ -135,6 +142,18 @@ export class LancamentoCadastroComponent implements OnInit {
 
   get editando() {
     return Boolean(this.lancamento.codigo);
+  }
+
+  novo( form: NgForm) {
+    form.reset();
+    setTimeout(() => {
+      this.lancamento = new Lancamento();
+    }, 1);
+    this.router.navigate(["/lancamentos/novo"]);
+  }
+
+  atualizaTitle() {
+    this.title.setTitle(`Edição de Lançamento: ${this.lancamento.descricao}`);
   }
 
 }

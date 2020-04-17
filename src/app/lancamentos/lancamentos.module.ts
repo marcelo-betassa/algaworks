@@ -54,10 +54,7 @@ export const customCurrencyMaskConfig = {
     SharedModule,
     NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
   ],
-  exports: [
-    LancamentoCadastroComponent,
-    PesquisaLancamentosComponent
-  ]
+  exports: []
 
 })
 export class LancamentosModule { }

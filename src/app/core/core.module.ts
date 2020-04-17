@@ -11,11 +11,13 @@ import { LancamentoService } from "../lancamentos/lancamento.service";
 import { PessoaService } from "../pessoas/pessoa.service";
 import { ConfirmationService } from "primeng/api";
 import { RouterModule } from "@angular/router";
+import { PaginaNaoEncontradaComponent } from "./pagina-nao-encontrada.component";
+import { Title } from "@angular/platform-browser";
 
 registerLocaleData(localePt);
 
 @NgModule({
-  declarations: [NavbarComponent],
+  declarations: [NavbarComponent, PaginaNaoEncontradaComponent],
   imports: [
     CommonModule,
     ConfirmDialogModule,
@@ -32,6 +34,7 @@ registerLocaleData(localePt);
     LancamentoService,
     PessoaService,
     ConfirmationService,
+    Title,
     { provide: LOCALE_ID , useValue: "pt-BR"}
   ],
   schemas: [
