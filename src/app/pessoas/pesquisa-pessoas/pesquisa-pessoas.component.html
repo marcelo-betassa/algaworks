@@ -37,7 +37,7 @@
             <td class="col-data-content"><a class="status" href="javascript:;" pTooltip="{{pessoa.ativo ? 'Desativar' : 'Ativar'}}"
                 tootipPosition="top" (click)="mudarStatus(pessoa.codigo , pessoa.ativo )">{{pessoa.ativo ? 'Ativo':'Inativo'}}</a></td>
             <td class="col-acoes">
-              <a class="nohover marginLeft" pTooltip="Editar" tooltipPosition="top" pButton icon="pi pi-pencil"></a>
+              <a class="nohover marginLeft" pTooltip="Editar" [routerLink]="['/pessoas', pessoa.codigo]"  tooltipPosition="top" pButton icon="pi pi-pencil"></a>
               <button class="marginLeft" pTooltip="Excluir" tooltipPosition="top" pButton icon="pi pi-trash" (click)="confirmarExclusao(pessoa.codigo)"></button>
             </td>
           </tr>

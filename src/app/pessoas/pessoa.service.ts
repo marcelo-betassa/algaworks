@@ -32,9 +32,19 @@ export class PessoaService {
   return this.http.post(`${this.pessoaURL}`, JSON.stringify(pessoa), { headers });
  }
 
+ atualizaPessoa(pessoa: Pessoa): Observable<any> {
+  const headers = new HttpHeaders({Authorization: "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==", "Content-Type": "application/json" });
+  return this.http.put(`${this.pessoaURL}/${pessoa.codigo}`, JSON.stringify(pessoa), { headers });
+ }
+
  listarPessoas() {
   const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
   return this.http.get(`${this.pessoaURL}` , {headers});
+ }
+
+ buscarPessoaPorCodigo(codigo: number): Observable<any> {
+  const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
+  return this.http.get(`${this.pessoaURL}/${codigo}`, { headers });
  }
 
  excluirPessoa(codigo: number) {

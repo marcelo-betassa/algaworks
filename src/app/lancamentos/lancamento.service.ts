@@ -61,15 +61,6 @@ export class LancamentoService {
     );
   }
 
-  // private converterStringParaDatas(lancamentos: Lancamento[]) {
-  //   for (const lancamento of lancamentos) {
-  //     lancamento.dataVencimento = moment(lancamento.dataVencimento, "DD-MM-YYYY").toDate();
-  //     if (lancamento.dataPagamento) {
-  //       lancamento.dataPagamento = moment(lancamento.dataPagamento, "DD-MM-YYYY").toDate();
-  //     }
-  //   }
-  // }
-
   excluir(codigo: number) {
     const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
     return this.http.delete(`${this.lancamentoURL}/${codigo}`, { headers });

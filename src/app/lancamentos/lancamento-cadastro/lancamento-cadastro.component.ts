@@ -72,7 +72,6 @@ export class LancamentoCadastroComponent implements OnInit {
   adicionarLancamento( form: NgForm) {
     this.lancamentoService.adicionarLancamento(this.lancamento).subscribe(
       (response: any) => {
-        console.log(response);
         this.toasty.success("Lancamento adicionado com sucesso!");
         // form.reset();
         // this.lancamento = new Lancamento();
@@ -90,8 +89,8 @@ export class LancamentoCadastroComponent implements OnInit {
     this.lancamentoService.atualizarLancamento(this.lancamento).subscribe(
       (response: any) => {
         this.lancamento = response;
-        this.toasty.success("Lançamento atualizado com sucesso!");
         this.atualizaTitle();
+        this.toasty.success("Lançamento atualizado com sucesso!");
       },
       (error: any) => {
         this.errorHandler.handle(error);

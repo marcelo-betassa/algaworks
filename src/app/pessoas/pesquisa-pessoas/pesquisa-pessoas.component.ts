@@ -5,6 +5,7 @@ import { LazyLoadEvent, ConfirmationService } from "primeng/api";
 import { Table } from "primeng/table/table";
 import { ToastyService } from "ng2-toasty";
 import { ErrorHandlerService } from "src/app/core/error-handler.service";
+import { Title } from "@angular/platform-browser";
 
 
 @Component({
@@ -24,11 +25,12 @@ export class PesquisaPessoasComponent implements OnInit {
     private pessoaService: PessoaService,
     private toasty: ToastyService,
     private confirmationService: ConfirmationService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private title: Title
     ) {}
 
   ngOnInit() {
-
+    this.title.setTitle("Pesquisa de pessoas");
   }
 
   pesquisarPessoa(pagina = 0) {
@@ -86,13 +88,17 @@ export class PesquisaPessoasComponent implements OnInit {
     );
   }
 
-  mudarStatus(pessoa: any, status: boolean ) {
-     console.log(status);
-     const novoStatus = !status;
-     this.pessoaService.mudarStatus( pessoa , novoStatus).subscribe(
+  mudarStatus(pessoa: any, status: boolean) {
+    const novoStatus = !status;
+    this.pessoaService.mudarStatus(pessoa, novoStatus).subscribe(
       (response: any) => {
         const acao = novoStatus ? "ativada" : "inativada";
-          // pessoa.ativo = novoStatus;
+        // pessoa.ativo = novoStatus;
+        if (this.tabela.first === 0) {
+          this.pesquisarPessoa();
+        } else {
+          this.tabela.reset();
+        }
         this.pesquisarPessoa();
         this.toasty.success(`Alterado Status para ${acao} com sucesso!`);
       },
