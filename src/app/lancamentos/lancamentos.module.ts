@@ -17,7 +17,7 @@ import { InputMaskModule } from "primeng/inputmask";
 import { SharedModule } from "../shared/shared.module";
 import { NgxCurrencyModule } from "ngx-currency";
 import { RouterModule } from "@angular/router";
-import { LancamentosRoutingModule } from './lancamentos-routing.module';
+import { LancamentosRoutingModule } from "./lancamentos-routing.module";
 
 
 export const customCurrencyMaskConfig = {
