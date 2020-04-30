@@ -4,7 +4,6 @@ import localePt from "@angular/common/locales/pt";
 import { registerLocaleData } from "@angular/common";
 import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { NavbarComponent } from "./navbar/NavbarComponent";
 import { ErrorHandlerService } from "./error-handler.service";
 import { ToastyModule } from "ng2-toasty";
 import { LancamentoService } from "../lancamentos/lancamento.service";
@@ -13,6 +12,7 @@ import { ConfirmationService } from "primeng/api";
 import { RouterModule } from "@angular/router";
 import { PaginaNaoEncontradaComponent } from "./pagina-nao-encontrada.component";
 import { Title } from "@angular/platform-browser";
+import { NavbarComponent } from "./navbar/navbar.component";
 
 registerLocaleData(localePt);
 

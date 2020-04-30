@@ -9,6 +9,7 @@ import { PessoasModule } from "./pessoas/pessoas.module";
 import { SharedModule } from "./shared/shared.module";
 import { CoreModule } from "./core/core.module";
 import { AppRoutingModule } from "./app-routing.module";
+import { SegurancaModule } from "./seguranca/seguranca.module";
 
 
 
@@ -23,6 +24,7 @@ import { AppRoutingModule } from "./app-routing.module";
     FormsModule,
     PessoasModule,
     LancamentosModule,
+    SegurancaModule,
     CoreModule,
     SharedModule,
     AppRoutingModule

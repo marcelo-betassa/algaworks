@@ -1,5 +1,5 @@
 import { RouterModule } from "@angular/router";
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { PesquisaPessoasComponent } from "./pesquisa-pessoas/pesquisa-pessoas.component";
 import { PessoaCadastroComponent } from "./pessoa-cadastro/pessoa-cadastro.component";

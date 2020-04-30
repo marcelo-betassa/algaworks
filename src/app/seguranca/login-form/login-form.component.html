@@ -1,0 +1,22 @@
+<div class="container" style="max-width: 400px; margin: 0, auto;">
+  <div class="container-fluid">
+    <form autocomplete="off" #loginForm="ngForm">
+      <h1>{{ loginForm.value | json}}</h1>
+      <h1>{{ loginForm.valid | json}}</h1>
+      <div class="ui-g-12 ui-fluid">
+        <div class="ui-g-12">
+          <h1>Login</h1>
+        </div>
+        <div class="ui-g-12">
+          <input type="text" placeholder="Usuário" pInputText id="usuario" name="usuario" (ngModel)="usuario" #usuario="ngModel" required>
+        </div>
+        <div class="ui-g-12">
+          <input type="password" placeholder="Senha" pInputText id="senha" name="senha" (ngModel)="senha" #senha="ngModel" required>
+        </div>
+        <div class="ui-g-12">
+          <button [disabled]="!loginForm.valid" pButton label="Login" type="submit" (click)="logar(loginForm)"></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
