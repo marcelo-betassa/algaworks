@@ -15,6 +15,7 @@ import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputMaskModule } from "primeng/inputmask";
 import { FormsModule } from "@angular/forms";
 import { SharedModule } from "../shared/shared.module";
+import { PessoasRoutingModule } from "./pessoas-routing.module";
 
 
 
@@ -38,6 +39,7 @@ import { SharedModule } from "../shared/shared.module";
     SelectButtonModule,
     DropdownModule,
     InputMaskModule,
+    PessoasRoutingModule,
     FormsModule,
     SharedModule
   ],
