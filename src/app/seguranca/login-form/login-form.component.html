@@ -1,20 +1,20 @@
-<div class="container" style="max-width: 400px; margin: auto">
-  <div class="container-fluid">
-    <form autocomplete="off" #loginForm="ngForm">
-      <div class="ui-g-12 ui-fluid">
-        <div class="ui-g-12">
-          <h1>Login</h1>
-        </div>
-        <div class="ui-g-12">
-          <input type="text" placeholder="Usuário" pInputText id="usuario" name="usuario" (ngModel)="usuario" #usuario="ngModel" required>
-        </div>
-        <div class="ui-g-12">
-          <input type="password" placeholder="Senha" pInputText id="senha" name="senha" (ngModel)="senha" #senha="ngModel" required>
-        </div>
-        <div class="ui-g-12">
-          <button [disabled]="!loginForm.valid" pButton label="Login" type="submit" (click)="logar(loginForm)"></button>
-        </div>
+<div class="container-fluid" style="max-width: 400px; margin: auto;">
+  <form autocomplete="off" #loginForm="ngForm">
+    <div class="ui-g-12 ui-fluid">
+      <div class="ui-g-12">
+        <h1>Login</h1>
       </div>
-    </form>
-  </div>
+      <div class="ui-g-12">
+        <input type="text" placeholder="Usuário" pInputText id="usuario" name="usuario" (ngModel)="usuario"
+          #usuario="ngModel" required>
+      </div>
+      <div class="ui-g-12">
+        <input type="password" placeholder="Senha" pInputText id="senha" name="senha" (ngModel)="senha" #senha="ngModel"
+          required>
+      </div>
+      <div class="ui-g-12">
+        <button [disabled]="!loginForm.valid" pButton label="Login" type="submit" (click)="logar(loginForm)"></button>
+      </div>
+    </div>
+  </form>
 </div>
