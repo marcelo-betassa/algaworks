@@ -2,7 +2,7 @@ import { HttpHeaders } from "@angular/common/http";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { JwtHelper } from "angular2-jwt";
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: "root"
@@ -14,33 +14,25 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private jwtHelper: JwtHelper
+    private jwtHelper: JwtHelperService
     ) {
       this.carregarToken();
      }
 
-  login(usuario: string , senha: string): void {
+  login(usuario: string , senha: string): Observable<any> {
 
     const headers = new HttpHeaders({Authorization: "Basic YW5ndWxhcjpAbmd1bEByMA==", "Content-Type": "application/x-www-form-urlencoded"});
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
-    this.http.post(this.oauthTokenURL, body, { headers }).subscribe(
-      (response: any) => {
-        console.log("Response...", response);
-        this.armazenarToken(response.access_token);
-      },
-      (error: any) => {
-        console.log("# Erro: ", error);
-      }
-    );
+    return this.http.post(this.oauthTokenURL, body, { headers });
   }
 
-  private armazenarToken(token: string) {
+  armazenarToken(token: string) {
     this.jwtPayload = this.jwtHelper.decodeToken(token);
     localStorage.setItem("token" , token);
     // console.log(this.jwtPayload);
   }
 
-  private carregarToken() {
+  carregarToken() {
     const token = localStorage.getItem("token");
     if (token) {
       this.armazenarToken(token);
