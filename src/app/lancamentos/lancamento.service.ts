@@ -16,7 +16,7 @@ export class LancamentoService {
 
   pesquisar(filtro: LancamentoFiltro ) {
     let params = new HttpParams();
-    const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
+    // const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
 
     params = params.set("page", filtro.pagina.toString());
     params = params.set("size", filtro.itensPorPagina.toString());
@@ -33,7 +33,7 @@ export class LancamentoService {
       params = params.set("dataVencimentoAte", moment(filtro.dataVencimentoFim).format("YYYY-MM-DD"));
     }
 
-    return this.http.get(`${this.lancamentoURL}?resumo`, { headers, params });
+    return this.http.get(`${this.lancamentoURL}?resumo`, { params });
   }
 
   adicionarLancamento(lancamento: Lancamento): Observable<any> {
@@ -49,8 +49,8 @@ export class LancamentoService {
   }
 
   buscarPorCodigo(codigo: number): Promise<any> {
-    const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
-    return this.http.get(`${this.lancamentoURL}/${codigo}`, { headers })
+    // const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
+    return this.http.get(`${this.lancamentoURL}/${codigo}`)
     .toPromise()
     .then(
       (response: any) => {
@@ -62,8 +62,8 @@ export class LancamentoService {
   }
 
   excluir(codigo: number) {
-    const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
-    return this.http.delete(`${this.lancamentoURL}/${codigo}`, { headers });
+    // const headers = new HttpHeaders().append("Authorization", "Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==");
+    return this.http.delete(`${this.lancamentoURL}/${codigo}`);
 
   }
 

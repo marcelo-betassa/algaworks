@@ -26,6 +26,10 @@ export class AuthService {
     return this.http.post(this.oauthTokenURL, body, { headers });
   }
 
+  temPermissao(permissao: string) {
+    return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+  }
+
   armazenarToken(token: string) {
     this.jwtPayload = this.jwtHelper.decodeToken(token);
     localStorage.setItem("token" , token);
