@@ -24,6 +24,9 @@ export class ErrorHandlerService {
             console.log("errorResponse #", error);
           }
         });
+      } else if (errorResponse.status === 403) {
+        msg = "Você não tem permissão para executar esta ação!";
+        console.log("errorResponse #", errorResponse);
       } else {
         msg = "Ocorreu um erro ao processar a sua solicitação";
         console.log("errorResponse #", errorResponse);

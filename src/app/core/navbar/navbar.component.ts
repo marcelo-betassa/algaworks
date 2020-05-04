@@ -17,4 +17,8 @@ export class NavbarComponent implements OnInit {
     this.exibindoMenu = false;
   }
 
+  novoAccessToken() {
+    this.auth.obterNovoAccessToken();
+  }
+
 }

@@ -6,6 +6,8 @@ import { FormsModule } from "@angular/forms";
 import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from "primeng/button";
 import { JwtHelperService, JwtModule } from "@auth0/angular-jwt";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { MoneyHttpInterceptorService } from "./money-http-interceptor.service";
 
 
 export function tokenGetter(): string {
@@ -29,7 +31,12 @@ export function tokenGetter(): string {
     FormsModule
   ],
   providers: [
-    JwtHelperService
+    JwtHelperService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MoneyHttpInterceptorService,
+      multi: true
+    }
   ]
 })
 

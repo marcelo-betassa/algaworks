@@ -6,6 +6,7 @@ import { Table } from "primeng/table/table";
 import { ToastyService } from "ng2-toasty";
 import { ErrorHandlerService } from "src/app/core/error-handler.service";
 import { Title } from "@angular/platform-browser";
+import { AuthService } from "src/app/seguranca/auth.service";
 
 @Component({
   selector: "app-pesquisa-lancamentos",
@@ -26,6 +27,7 @@ export class PesquisaLancamentosComponent implements OnInit {
     private toasty: ToastyService,
     private confirmationService: ConfirmationService,
     private errorHandler: ErrorHandlerService,
+    public auth: AuthService,
     private title: Title
      ) { }
 
