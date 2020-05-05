@@ -1,18 +1,27 @@
 import { Injectable, NgZone } from "@angular/core";
 import { ToastyService } from "ng2-toasty";
 import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
+import { NotAuthenticatedError } from '../seguranca/not-authenticated-error';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: "root"
 })
 export class ErrorHandlerService {
 
-  constructor(private toastyService: ToastyService) { }
+  constructor(
+    private toastyService: ToastyService,
+    private route: Router
+    ) { }
 
   handle(errorResponse: any) {
     let msg: string;
     if (typeof errorResponse === "string") {
       msg = errorResponse;
+    } else if (errorResponse instanceof NotAuthenticatedError) {
+      msg ="Sua sessão expirou!";
+      this.route.navigate(["/login"]);
+
     } else if (errorResponse instanceof HttpErrorResponse && errorResponse.status >= 400 && errorResponse.status <= 499) {
       if (Array.isArray(errorResponse.error)) {
         errorResponse.error.forEach(obj => {

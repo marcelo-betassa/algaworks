@@ -10,6 +10,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class AuthService {
 
   oauthTokenURL = "http://localhost:8080/oauth/token";
+  tokensRevokeURL="http://localhost:8080/tokens/revoke"
   jwtPayload: any;
 
   constructor(
@@ -24,6 +25,15 @@ export class AuthService {
     const headers = new HttpHeaders({Authorization: "Basic YW5ndWxhcjpAbmd1bEByMA==", "Content-Type": "application/x-www-form-urlencoded"});
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
     return this.http.post(this.oauthTokenURL, body, { headers , withCredentials: true });
+  }
+
+  temQualquerPermissao(roles) {
+    for (const role of roles) {
+      if (this.temPermissao(role)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   temPermissao(permissao: string) {
@@ -45,6 +55,11 @@ export class AuthService {
     });
   }
 
+  limparAccessToken() {
+    localStorage.removeItem("token");
+    this.jwtPayload = null;
+  }
+
   armazenarToken(token: string) {
     this.jwtPayload = this.jwtHelper.decodeToken(token);
     localStorage.setItem("token" , token);
@@ -61,6 +76,10 @@ export class AuthService {
   isAccessTokenInvalido() {
     const token = localStorage.getItem("token");
     return !token || this.jwtHelper.isTokenExpired(token);
+  }
+
+  logout() {
+    return this.http.delete(this.tokensRevokeURL, { withCredentials: true});
   }
 
 }

@@ -10,6 +10,8 @@ import { SharedModule } from "./shared/shared.module";
 import { CoreModule } from "./core/core.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { SegurancaModule } from "./seguranca/seguranca.module";
+import { CanDeactivateGuard } from './seguranca/can-deactivate-guard';
+
 
 
 
@@ -30,7 +32,7 @@ import { SegurancaModule } from "./seguranca/seguranca.module";
     AppRoutingModule
   ],
   exports: [],
-  providers: [],
+  providers: [CanDeactivateGuard],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],

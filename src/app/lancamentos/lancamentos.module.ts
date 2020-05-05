@@ -1,4 +1,4 @@
-import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { LancamentosGridComponent } from "./lancamentos-grid/lancamentos-grid.component";
@@ -6,7 +6,6 @@ import { PesquisaLancamentosComponent } from "./pesquisa-lancamentos/pesquisa-la
 import { LancamentoCadastroComponent } from "./lancamento-cadastro/lancamento-cadastro.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DropdownModule } from "primeng/dropdown";
-import { CalendarModule } from "primeng/calendar";
 import { SelectButtonModule } from "primeng/selectbutton";
 import { InputTextModule } from "primeng/inputtext";
 import { ButtonModule } from "primeng/button";
@@ -16,7 +15,6 @@ import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputMaskModule } from "primeng/inputmask";
 import { SharedModule } from "../shared/shared.module";
 import { NgxCurrencyModule } from "ngx-currency";
-import { RouterModule } from "@angular/router";
 import { LancamentosRoutingModule } from "./lancamentos-routing.module";
 
 
