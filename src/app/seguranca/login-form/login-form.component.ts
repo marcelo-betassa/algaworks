@@ -15,6 +15,7 @@ export class LoginFormComponent implements OnInit {
   usuario: string;
   senha: string;
   authenticated: boolean;
+
   constructor(
     public auth: AuthService,
     private errorHandler: ErrorHandlerService,
@@ -37,9 +38,7 @@ export class LoginFormComponent implements OnInit {
 
 
   logar(usuario , senha) {
-    // this.usuario = form.control.value["usuario"];
-    // this.senha = form.control.value["senha"];
-    // console.log(this.usuario, this.senha);
+
     this.auth.login(usuario , senha).subscribe(
       (response: any) => {
         console.log("Response...", response);

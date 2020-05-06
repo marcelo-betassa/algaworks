@@ -18,9 +18,6 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    // this.auth.authenticated.subscribe(auth => {
-    //   this.authenticated = auth;
-    // });
 
     if (this.auth.isAccessTokenInvalido()) {
       console.log("Navegando com accessToken invalido....");

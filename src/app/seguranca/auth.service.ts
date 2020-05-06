@@ -17,15 +17,15 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private jwtHelper: JwtHelperService
-    ) {
-      this.carregarToken();
-     }
+  ) {
+    this.carregarToken();
+  }
 
-  login(usuario: string , senha: string): Observable<any> {
+  login(usuario: string, senha: string): Observable<any> {
 
-    const headers = new HttpHeaders({Authorization: "Basic YW5ndWxhcjpAbmd1bEByMA==", "Content-Type": "application/x-www-form-urlencoded"});
+    const headers = new HttpHeaders({ Authorization: "Basic YW5ndWxhcjpAbmd1bEByMA==", "Content-Type": "application/x-www-form-urlencoded" });
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
-    return this.http.post(this.oauthTokenURL, body, { headers , withCredentials: true });
+    return this.http.post(this.oauthTokenURL, body, { headers, withCredentials: true });
   }
 
   temQualquerPermissao(roles) {
@@ -42,18 +42,18 @@ export class AuthService {
   }
 
   obterNovoAccessToken(): Promise<any> {
-    const headers = new HttpHeaders({Authorization: "Basic YW5ndWxhcjpAbmd1bEByMA==", "Content-Type": "application/x-www-form-urlencoded"});
+    const headers = new HttpHeaders({ Authorization: "Basic YW5ndWxhcjpAbmd1bEByMA==", "Content-Type": "application/x-www-form-urlencoded" });
     const body = `grant_type=refresh_token`;
-    return this.http.post(this.oauthTokenURL, body, { headers , withCredentials: true } )
-    .toPromise()
-    .then((response: any) => {
-       this.armazenarToken(response.access_token);
-       return Promise.resolve(null);
-    })
-    .catch((error: any) => {
-      console.error("# Erro ao criar Novo AccessToken", error);
-      return Promise.resolve(null);
-    });
+    return this.http.post(this.oauthTokenURL, body, { headers, withCredentials: true })
+      .toPromise()
+      .then((response: any) => {
+        this.armazenarToken(response.access_token);
+        return Promise.resolve(null);
+      })
+      .catch((error: any) => {
+        console.error("# Erro ao criar Novo AccessToken", error);
+        return Promise.resolve(null);
+      });
   }
 
   limparAccessToken() {
@@ -64,7 +64,7 @@ export class AuthService {
 
   armazenarToken(token: string) {
     this.jwtPayload = this.jwtHelper.decodeToken(token);
-    localStorage.setItem("token" , token);
+    localStorage.setItem("token", token);
     // console.log(this.jwtPayload);
   }
 
@@ -81,7 +81,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.delete(this.tokensRevokeURL, { withCredentials: true});
+    return this.http.delete(this.tokensRevokeURL, { withCredentials: true });
   }
 
   isAuthenticated() {

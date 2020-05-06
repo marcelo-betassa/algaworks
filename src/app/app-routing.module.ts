@@ -8,9 +8,6 @@ import { AuthGuard } from "./seguranca/auth.guard";
 
 
 
-
-
-
 const routes: Routes = [
  // { path: "", redirectTo: "lancamentos", pathMatch: "full" },
   { path: "", redirectTo: "login", pathMatch: "full" },
