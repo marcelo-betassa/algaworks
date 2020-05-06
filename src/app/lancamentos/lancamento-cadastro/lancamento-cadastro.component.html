@@ -2,7 +2,7 @@
   <form #formLancamento="ngForm" (ngSubmit)="salvarLancamento(formLancamento)">
     <div class="ui-g">
       <div class="ui-g-12">
-        <h1>{{editando ? "Edição de" : "Novo"}} Lançamento{{ formLancamento.value | json }}</h1>
+        <h1>{{editando ? "Edição de" : "Novo"}} Lançamento</h1>
       </div>
       <div class="ui-g-12">
         <p-selectButton [options]="tipos" name="tipo" [(ngModel)]="lancamento.tipoLancamento" #tipo></p-selectButton>
