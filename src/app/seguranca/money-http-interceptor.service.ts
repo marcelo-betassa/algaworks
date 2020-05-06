@@ -31,7 +31,6 @@ export class MoneyHttpInterceptorService implements HttpInterceptor {
 
         );
     }
-    console.log("token não expirado");
     return next.handle(req);
   }
 
