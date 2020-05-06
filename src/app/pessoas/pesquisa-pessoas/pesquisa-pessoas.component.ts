@@ -74,7 +74,6 @@ export class PesquisaPessoasComponent implements OnInit {
   excluir(pessoa: any) {
     this.pessoaService.excluirPessoa(pessoa).subscribe(
       (request: any) => {
-        console.log(`Excluindo pessoa de código ${pessoa}`);
         if (this.tabela.first === 0) {
           this.pesquisarPessoa();
         } else {

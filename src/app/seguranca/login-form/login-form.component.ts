@@ -26,12 +26,10 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
     this.auth.authenticated.subscribe( authenticated => {
       this.authenticated = authenticated;
-      console.log("ngOnInit auth #1 ", this.authenticated);
     });
     this.auth.authenticated.next(this.authenticated);
     if (this.authenticated === null) {
       this.authenticated = false;
-      console.log("ngOnInit auth #2 ", this.authenticated);
       this.auth.authenticated.next(this.authenticated);
     }
   }
@@ -41,7 +39,6 @@ export class LoginFormComponent implements OnInit {
 
     this.auth.login(usuario , senha).subscribe(
       (response: any) => {
-        console.log("Response...", response);
         this.auth.armazenarToken(response.access_token);
         this.auth.authenticated.next(true);
         this.router.navigate(["/lancamentos"]);

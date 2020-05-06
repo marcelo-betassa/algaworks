@@ -33,10 +33,7 @@ export class MessageDatepickerComponent {
   text: string;
 
   isVazio() {
-    // console.log(this.form);
-    console.log(this.form.get([this.controlName])?.hasError(this.error));
     return this.form.get([this.controlName])?.hasError(this.error) && this.form.get([this.controlName]).dirty;
-
   }
 
 

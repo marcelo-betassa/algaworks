@@ -54,7 +54,6 @@ export class LancamentoService {
     .toPromise()
     .then(
       (response: any) => {
-        console.log(response);
         const lancamento = response as Lancamento;
         return lancamento;
       }

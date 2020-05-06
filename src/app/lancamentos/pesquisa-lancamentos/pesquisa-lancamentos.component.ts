@@ -66,7 +66,6 @@ export class PesquisaLancamentosComponent implements OnInit {
   excluir(lancamento: any) {
     this.lancamentoService.excluir(lancamento).subscribe(
       (request: any) => {
-        console.log(`Exclusão do lançamento ${lancamento} realizada com sucesso!`);
         if (this.tabela.first === 0) {
           this.pesquisar();
         } else {

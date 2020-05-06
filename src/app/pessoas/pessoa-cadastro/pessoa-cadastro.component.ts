@@ -45,7 +45,6 @@ export class PessoaCadastroComponent implements OnInit {
   adicionarPessoa( form: NgForm) {
     this.pessoaService.adicionarPessoa(this.pessoa).subscribe(
       (response: any) => {
-        console.log(response);
         this.toasty.success("Pessoa cadastrada com sucesso!");
         // form.reset();
         // this.pessoa = new Pessoa();
@@ -80,7 +79,6 @@ export class PessoaCadastroComponent implements OnInit {
   carregarPessoaPorCodigo(codigo: number) {
     this.pessoaService.buscarPessoaPorCodigo(codigo).subscribe(
       (response: any) => {
-        console.log("# Response", response );
         this.pessoa = response;
         this.atualizaTitle();
       },
@@ -97,7 +95,6 @@ export class PessoaCadastroComponent implements OnInit {
   }
 
   atualizaTitle() {
-    console.log(this.pessoa);
     this.title.setTitle(`Editando Pessoa: ${this.pessoa.nome}`);
   }
 

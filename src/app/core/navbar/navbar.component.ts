@@ -29,7 +29,6 @@ export class NavbarComponent implements OnInit {
     this.auth.logout().subscribe(
       (response: any) => {
         this.auth.limparAccessToken();
-        console.log("Excluido AccessToken com sucesso!", response);
         this.router.navigate(["/login"]);
       } ,
       (error: any) => {
