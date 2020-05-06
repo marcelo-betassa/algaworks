@@ -1,7 +1,7 @@
 import { HttpHeaders } from "@angular/common/http";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, BehaviorSubject } from "rxjs";
 import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
@@ -10,8 +10,9 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class AuthService {
 
   oauthTokenURL = "http://localhost:8080/oauth/token";
-  tokensRevokeURL="http://localhost:8080/tokens/revoke"
+  tokensRevokeURL = "http://localhost:8080/tokens/revoke";
   jwtPayload: any;
+  authenticated: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
   constructor(
     private http: HttpClient,
@@ -58,6 +59,7 @@ export class AuthService {
   limparAccessToken() {
     localStorage.removeItem("token");
     this.jwtPayload = null;
+    this.authenticated.next(false);
   }
 
   armazenarToken(token: string) {
@@ -80,6 +82,14 @@ export class AuthService {
 
   logout() {
     return this.http.delete(this.tokensRevokeURL, { withCredentials: true});
+  }
+
+  isAuthenticated() {
+    if (this.authenticated) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

@@ -2,10 +2,10 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { LoginFormComponent } from "./login-form/login-form.component";
 import { RouterModule, Routes } from "@angular/router";
-import { CanDeactivateGuard } from './can-deactivate-guard';
+import { AnonymousGuard } from "./anonymous.guard";
 
 const routes: Routes = [
-  { path: "login", component: LoginFormComponent, canDeactivate: [CanDeactivateGuard] }
+  { path: "login", component: LoginFormComponent, canActivate: [AnonymousGuard]}
 
 ];
 
@@ -14,6 +14,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  providers: [AnonymousGuard]
 })
 export class SegurancaRoutingModule { }

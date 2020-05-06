@@ -9,7 +9,6 @@ import { JwtHelperService, JwtModule } from "@auth0/angular-jwt";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { MoneyHttpInterceptorService } from "./money-http-interceptor.service";
 import { AuthGuard } from "./auth.guard";
-import { CanDeactivateGuard } from './can-deactivate-guard';
 
 
 export function tokenGetter(): string {
@@ -39,8 +38,7 @@ export function tokenGetter(): string {
       useClass: MoneyHttpInterceptorService,
       multi: true
     },
-    AuthGuard,
-    CanDeactivateGuard
+    AuthGuard
   ]
 })
 
