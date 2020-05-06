@@ -30,7 +30,10 @@
   text-transform: uppercase;
   border-bottom: 1px solid #525151;
 }
-.navbar-usuario a:hover, .navbar-usuario a:visited {
+.navbar-usuario a,
+.navbar-usuario a:hover,
+.navbar-usuario a:visited,
+.navbar-usuario a:active {
   color: #fff !important;
   text-decoration: none !important;
 }
