@@ -4,15 +4,18 @@ import { LancamentoFiltro } from "./lancamento-filtro";
 import * as moment from "moment";
 import { Lancamento } from "../core/model";
 import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root"
 })
 export class LancamentoService {
 
-  lancamentoURL = "http://localhost:8080/lancamentos";
+  lancamentoURL: string;
 
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient) {
+    this.lancamentoURL = `${environment.apiURL}/lancamentos`;
+   }
 
   pesquisar(filtro: LancamentoFiltro ) {
     let params = new HttpParams();

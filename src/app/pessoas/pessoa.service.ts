@@ -3,15 +3,18 @@ import { PessoaFiltro } from "./pessoa-filtro";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root"
 })
 export class PessoaService {
 
-  pessoaURL = "http://localhost:8080/pessoas";
+  pessoaURL: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.pessoaURL = `${environment.apiURL}/pessoas`;
+   }
 
  pesquisaPessoa( pFiltro: PessoaFiltro ) {
 

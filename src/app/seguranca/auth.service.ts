@@ -3,14 +3,15 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, BehaviorSubject } from "rxjs";
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
 
-  oauthTokenURL = "http://localhost:8080/oauth/token";
-  tokensRevokeURL = "http://localhost:8080/tokens/revoke";
+  oauthTokenURL: string;
+  tokensRevokeURL: string;
   jwtPayload: any;
   authenticated: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
@@ -19,6 +20,8 @@ export class AuthService {
     private jwtHelper: JwtHelperService
   ) {
     this.carregarToken();
+    this.oauthTokenURL = `${environment.apiURL}/oauth/token`;
+    this.tokensRevokeURL = `${environment.apiURL}/tokens/revoke`;
   }
 
   login(usuario: string, senha: string): Observable<any> {
