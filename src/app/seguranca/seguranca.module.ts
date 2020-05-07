@@ -1,4 +1,4 @@
-import { environment } from 'src/environments/environment';
+import { environment } from "src/environments/environment";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { LoginFormComponent } from "./login-form/login-form.component";
@@ -10,7 +10,7 @@ import { JwtHelperService, JwtModule } from "@auth0/angular-jwt";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { MoneyHttpInterceptorService } from "./money-http-interceptor.service";
 import { AuthGuard } from "./auth.guard";
-import { environment } from 'src/environments/environment';
+
 
 
 export function tokenGetter(): string {
