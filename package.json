@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "tslint",
     "e2e": "ng e2e",
-    "preinstall": "npx npm-force-resolutions"
+    "preinstall": "npx npm-force-resolutions",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -36,9 +37,7 @@
     "rxjs": "^6.5.5",
     "rxjs-compat": "^6.5.5",
     "tslib": "^1.11.1",
-    "zone.js": "^0.10.3"
-  },
-  "devDependencies": {
+    "zone.js": "^0.10.3",
     "@angular-devkit/build-angular": "^0.901.0",
     "@angular/cli": "^9.1.0",
     "@angular/compiler-cli": "^9.0.7",
@@ -58,6 +57,13 @@
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5"
+  },
+  "devDependencies": {
+
+  },
+  "engines": {
+    "node": "12.14.1",
+    "npm": "6.13.4"
   },
   "resolutions": {
     "minimist": "^1.2.5"
