@@ -7,7 +7,7 @@ import { FormsModule } from "@angular/forms";
 import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from "primeng/button";
 import { JwtHelperService, JwtModule } from "@auth0/angular-jwt";
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { MoneyHttpInterceptorService } from "./money-http-interceptor.service";
 import { AuthGuard } from "./auth.guard";
 
@@ -24,11 +24,10 @@ export function tokenGetter(): string {
     SegurancaRoutingModule,
     InputTextModule,
     ButtonModule,
+    HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter,
-        whitelistedDomains: [`${environment.whitelistedDomains}`],
-        blacklistedRoutes: [`${environment.blacklistedRoutes}`]
+        tokenGetter: tokenGetter,
       }
     }),
     FormsModule
