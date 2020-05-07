@@ -27,7 +27,7 @@ export function tokenGetter(): string {
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
+        tokenGetter,
       }
     }),
     FormsModule

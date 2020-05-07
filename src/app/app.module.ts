@@ -10,8 +10,8 @@ import { SharedModule } from "./shared/shared.module";
 import { CoreModule } from "./core/core.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { SegurancaModule } from "./seguranca/seguranca.module";
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtHttpInterceptor } from './seguranca/jwt-http.interceptor';
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { JwtHttpInterceptor } from "./seguranca/jwt-http.interceptor";
 
 
 
