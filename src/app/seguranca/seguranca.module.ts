@@ -28,7 +28,7 @@ export function tokenGetter(): string {
       config: {
         tokenGetter,
         whitelistedDomains: [`${environment.whitelistedDomains}`],
-        blacklistedRoutes: [] // ${environment.blackListedRoutes}
+        blacklistedRoutes: [`${environment.blacklistedRoutes}`]
       }
     }),
     FormsModule
