@@ -1,0 +1,52 @@
+<div class="container contner">
+  <div class="ui-g">
+    <form class="ui-g-12" (ngSubmit)="pesquisarPessoa()">
+      <div class="ui-g-12">
+        <h1>Pessoas</h1>
+      </div>
+      <div class="ui-g-12 ui-fluid">
+        <label>Nome</label>
+        <input type="text" pInputText id="nome" name="nome" [(ngModel)]="pFiltro.nome">
+      </div>
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+    </form>
+  </div>
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <p-table [value]="pessoas" [paginator]="true" [rows]="pFiltro.itensPorPagina"
+       [totalRecords]="totalRegistros" [lazy]="true" [responsive]="true" (onLazyLoad)="aoMudarPagina($event)" #tabela>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          Nenhuma pessoa encontrada
+        </ng-template>
+        <ng-template pTemplate="body" let-pessoa>
+          <tr>
+            <td class="col-data-content">{{pessoa.nome}}</td>
+            <td class="col-data-content">{{pessoa.endereco?.cidade}}</td>
+            <td class="col-data-content">{{pessoa.endereco?.estado}}</td>
+            <td class="col-data-content"><a class="status" href="javascript:;" pTooltip="{{pessoa.ativo ? 'Desativar' : 'Ativar'}}"
+                tootipPosition="top" (click)="mudarStatus(pessoa.codigo , pessoa.ativo )">{{pessoa.ativo ? 'Ativo':'Inativo'}}</a></td>
+            <td class="col-acoes">
+              <a class="nohover marginLeft" pTooltip="Editar" [routerLink]="['/pessoas', pessoa.codigo]"  tooltipPosition="top" pButton icon="pi pi-pencil"></a>
+              <button class="marginLeft" pTooltip="Excluir" tooltipPosition="top" pButton icon="pi pi-trash" (click)="confirmarExclusao(pessoa.codigo)"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+    </div>
+    <div class="ui-g-12">
+      <a class="nohover" pButton routerLink="/pessoas/nova" label="Novo Pessoa"></a>
+    </div>
+  </div>
+</div>
