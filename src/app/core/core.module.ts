@@ -38,7 +38,7 @@ registerLocaleData(localePt);
     ConfirmationService,
     AuthService,
     Title,
-    { provide: LOCALE_ID , useValue: "pt-BR"}
+    { provide: LOCALE_ID , useValue: "pt"}
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
