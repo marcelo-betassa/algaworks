@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { LoginFormComponent } from "./login-form/login-form.component";
@@ -27,7 +28,7 @@ export function tokenGetter(): string {
       config: {
         tokenGetter,
         whitelistedDomains: [`${environment.whitelistedDomains}`],
-        blacklistedRoutes: [`${environment.blacklistedRoutes}`]
+        blacklistedRoutes: [] // ${environment.blackListedRoutes}
       }
     }),
     FormsModule
