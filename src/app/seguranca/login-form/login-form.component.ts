@@ -41,7 +41,7 @@ export class LoginFormComponent implements OnInit {
       (response: any) => {
         this.auth.armazenarToken(response.access_token);
         this.auth.authenticated.next(true);
-        this.router.navigate(["/lancamentos"]);
+        this.router.navigate(["/dashboard"]);
       },
       (error: any) => {
         this.auth.authenticated.next(false);
