@@ -5,6 +5,7 @@ import { CommonModule } from "@angular/common";
 import { DashboardRoutingModule } from "./dashboard-routing.module";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { SharedModule } from "../shared/shared.module";
+import { HttpClientModule } from "@angular/common/http";
 
 
 
@@ -13,6 +14,7 @@ import { SharedModule } from "../shared/shared.module";
   imports: [
     CommonModule,
     ChartModule,
+    HttpClientModule,
     PanelModule,
     SharedModule,
     DashboardRoutingModule

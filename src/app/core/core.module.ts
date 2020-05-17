@@ -15,6 +15,7 @@ import { Title } from "@angular/platform-browser";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { AuthService } from "../seguranca/auth.service";
 import { NaoAutorizadoComponent } from "./nao-autorizado.component";
+import { DashboardService } from "../dashboard/dashboard.service";
 
 registerLocaleData(localePt);
 
@@ -37,6 +38,7 @@ registerLocaleData(localePt);
     PessoaService,
     ConfirmationService,
     AuthService,
+    DashboardService,
     Title,
     { provide: LOCALE_ID , useValue: "pt"}
   ],

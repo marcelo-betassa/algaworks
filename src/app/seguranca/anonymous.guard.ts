@@ -20,7 +20,7 @@ export class AnonymousGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (!this.auth.isAccessTokenInvalido() && this.auth.isAuthenticated() && next.url[0].path === "login") {
-      this.router.navigate(["/lancamentos"]);
+      this.router.navigate(["/dashboard"]);
     }
     return true;
   }
