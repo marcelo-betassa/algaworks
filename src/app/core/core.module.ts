@@ -16,7 +16,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { AuthService } from "../seguranca/auth.service";
 import { NaoAutorizadoComponent } from "./nao-autorizado.component";
 import { DashboardService } from "../dashboard/dashboard.service";
-import { RelatoriosService } from '../relatorio/relatorios.service';
+import { RelatoriosService } from "../relatorio/relatorios.service";
 
 registerLocaleData(localePt);
 

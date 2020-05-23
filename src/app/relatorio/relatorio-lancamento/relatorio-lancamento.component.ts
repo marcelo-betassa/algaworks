@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { RelatoriosService } from '../relatorios.service';
+import { Component, OnInit } from "@angular/core";
+import { RelatoriosService } from "../relatorios.service";
 
 @Component({
-  selector: 'app-relatorio-lancamento',
-  templateUrl: './relatorio-lancamento.component.html',
-  styleUrls: ['./relatorio-lancamento.component.css']
+  selector: "app-relatorio-lancamento",
+  templateUrl: "./relatorio-lancamento.component.html",
+  styleUrls: ["./relatorio-lancamento.component.css"]
 })
 export class RelatorioLancamentoComponent implements OnInit {
 

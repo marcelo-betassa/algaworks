@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DashboardService } from "../dashboard.service";
 import * as moment from "moment";
-import { DecimalPipe } from '@angular/common';
+import { DecimalPipe } from "@angular/common";
 
 @Component({
   selector: "app-dashboard",

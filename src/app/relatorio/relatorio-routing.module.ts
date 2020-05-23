@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { RelatorioLancamentoComponent } from './relatorio-lancamento/relatorio-lancamento.component';
-import { AuthGuard } from '../seguranca/auth.guard';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { RelatorioLancamentoComponent } from "./relatorio-lancamento/relatorio-lancamento.component";
+import { AuthGuard } from "../seguranca/auth.guard";
 
 
 const routes: Routes = [
