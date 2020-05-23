@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Relatório de lançamentos por pessoa</h1>
+    </div>
+    <form #relatorioForm="ngForm" (ngSubmit)="gerar()" >
+      <h1>{{relatorioForm.value | json}}</h1>
+      <div class="ui-g-12">
+        <label for="dataInicio">Vencimento</label>
+        <app-calendar id="dataInicio" [(ngModel)]="dataInicio" [inputStyle]="{width:'100px'}" name="dataInicio" required></app-calendar>
+        <label for="dataFim">Até</label>
+        <app-calendar id="dataFim" [(ngModel)]="dataFim" [inputStyle]="{width:'100px'}" name="dataFim" required></app-calendar>
+      </div>
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Gerar" [disabled]="relatorioForm.invalid"></button>
+
+      </div>
+    </form>
+  </div>
+</div>

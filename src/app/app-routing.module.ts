@@ -11,6 +11,7 @@ import { LoginFormComponent } from "./seguranca/login-form/login-form.component"
 const routes: Routes = [
  // { path: "", redirectTo: "lancamentos", pathMatch: "full" },
   {path: "dashboard", loadChildren: () => import("./dashboard/dashboard.module").then(m => m.DashboardModule)},
+  {path: "relatorios", loadChildren: () => import("./relatorio/relatorio.module").then(r => r.RelatorioModule)},
 
 
   { path: "", redirectTo: "dashboard", pathMatch: "full" },
