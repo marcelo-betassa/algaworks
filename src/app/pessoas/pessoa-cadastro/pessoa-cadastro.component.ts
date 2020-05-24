@@ -16,6 +16,7 @@ export class PessoaCadastroComponent implements OnInit {
 
   cep: any;
   pessoa = new Pessoa();
+  showModal: boolean;
 
   constructor(
     private pessoaService: PessoaService,
@@ -28,6 +29,7 @@ export class PessoaCadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle("Nova Pessoa");
+    this.showModal = false;
     const codigoPessoa = this.route.snapshot.params.codigo;
     if (codigoPessoa) {
       this.carregarPessoaPorCodigo(codigoPessoa);
@@ -100,6 +102,10 @@ export class PessoaCadastroComponent implements OnInit {
 
   get editando() {
     return Boolean(this.pessoa.codigo);
+  }
+
+  prepararNovoContato() {
+    this.showModal = true;
   }
 
 }
