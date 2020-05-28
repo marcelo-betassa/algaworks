@@ -38,3 +38,11 @@ tr > td > a {
 .marginLeft {
   margin: 0 .25em!important;
 }
+
+.color-texto > a {
+  color: #fff !important;
+}
+
+#novaPessoa.ui-button-text {
+  color: #fff !important;
+}

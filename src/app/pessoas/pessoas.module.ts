@@ -18,6 +18,7 @@ import { InputMaskModule } from "primeng/inputmask";
 import { FormsModule } from "@angular/forms";
 import { SharedModule } from "../shared/shared.module";
 import { PessoasRoutingModule } from "./pessoas-routing.module";
+import { PessoaCadastroContatoComponent } from "./pessoa-cadastro-contato/pessoa-cadastro-contato.component";
 
 
 
@@ -27,7 +28,8 @@ import { PessoasRoutingModule } from "./pessoas-routing.module";
   declarations: [
     PesquisaPessoasComponent,
     PessoaCadastroComponent,
-    PessoasGridComponent
+    PessoasGridComponent,
+    PessoaCadastroContatoComponent
   ],
   imports: [
     CommonModule,

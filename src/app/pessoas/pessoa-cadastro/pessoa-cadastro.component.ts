@@ -1,4 +1,4 @@
-import { Pessoa } from "./../../core/model";
+import { Pessoa, Contato } from "./../../core/model";
 import { Component, OnInit } from "@angular/core";
 import { PessoaService } from "../pessoa.service";
 import { ToastyService } from "ng2-toasty";
@@ -16,7 +16,7 @@ export class PessoaCadastroComponent implements OnInit {
 
   cep: any;
   pessoa = new Pessoa();
-  showModal: boolean;
+  contato: Contato;
 
   constructor(
     private pessoaService: PessoaService,
@@ -28,8 +28,7 @@ export class PessoaCadastroComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.title.setTitle("Nova Pessoa");
-    this.showModal = false;
+   // this.title.setTitle("Nova Pessoa");
     const codigoPessoa = this.route.snapshot.params.codigo;
     if (codigoPessoa) {
       this.carregarPessoaPorCodigo(codigoPessoa);
@@ -102,10 +101,6 @@ export class PessoaCadastroComponent implements OnInit {
 
   get editando() {
     return Boolean(this.pessoa.codigo);
-  }
-
-  prepararNovoContato() {
-    this.showModal = true;
   }
 
 }

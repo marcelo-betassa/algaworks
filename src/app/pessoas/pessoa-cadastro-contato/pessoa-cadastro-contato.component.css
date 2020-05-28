@@ -1,0 +1,29 @@
+.ui-button:hover {
+  color: #007ad9 !important;
+  background-color: #fff !important;
+}
+
+.ui-button:active {
+  color: #fff !important;
+  background-color: #007ad9 !important;
+}
+
+#novoContato, #novoContato > span {
+  color: #333 !important;
+  background-color: #f4f4f4 !important;
+  border: 1px solid #9a9a9a !important;
+}
+
+.col-acoes {
+  width: 90px;
+  text-align: center;
+
+}
+
+.marginLeft {
+  margin: 0 .25em!important;
+}
+
+.ui-button-text {
+  color: #9a9a9a !important;
+}
