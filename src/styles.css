@@ -6,15 +6,35 @@
 body {
   margin: 0 0 0 0;
   font-family: Arial, Helvetica, sans-serif;
-  color: #404C51;
+  color: #404C51; /*#404C51 */
 }
 
 div > a > span {
-  color: #fff;
+  color:#9a9a9a;
+}
+
+ .ui-button-text {
+  color: #fff !important;
+}
+
+.ui-button-text > span {
+  color:#333 !important;
+}
+
+.ui-button-text:hover {
+  color: #007ad9 !important;
+  background-color: #fff !important;
+}
+
+.ui-button-text:active {
+  color: #fff !important;
+  background-color:  #007ad9 !important;
+
 }
 
 div > a > span:hover {
   color: #007ad9;
+  background-color: #fff;
 }
 
 div > a > span:active {
@@ -22,6 +42,23 @@ div > a > span:active {
   background-color: #007ad9;
 }
 
+#novoContato {
+  color: #333 !important;
+  background-color: #e7e7e7 !important;
+  border: 1px solid #333 !important;
+}
+
+#novoContato > span:hover {
+  color: #333 !important;
+  background-color: #f4f4f4 !important;
+  border: 1px solid #ffffff !important;
+}
+
+#novoContato > span:active {
+  color: #fff !important;
+  background-color: #949494 !important;
+  border: 1px solid #ffffff !important;
+}
 
 h1 , a , button {
   font-weight: bold;
@@ -53,5 +90,6 @@ button:disabled, a:disabled {
     width: 1170px;
     margin: 0 auto;
   }
+
 }
 

@@ -17,13 +17,9 @@ export class RelatorioLancamentoComponent implements OnInit {
   }
 
   gerar() {
-    console.log("Data inicio: ", this.dataInicio);
-    console.log("Data fim: ", this.dataFim);
-
     this.relatorioService.relatorioLancamentosPorPessoa(this.dataInicio, this.dataFim).subscribe(
       (response: any) => {
         const url = window.URL.createObjectURL(response);
-        console.log("Response relatorio: # ", response);
         window.open(url);
       },
       (error: any) => {

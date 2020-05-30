@@ -8,12 +8,6 @@
   background-color: #007ad9 !important;
 }
 
-#novoContato, #novoContato > span {
-  color: #333 !important;
-  background-color: #f4f4f4 !important;
-  border: 1px solid #9a9a9a !important;
-}
-
 .col-acoes {
   width: 90px;
   text-align: center;

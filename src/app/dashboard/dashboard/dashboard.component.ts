@@ -40,7 +40,6 @@ export class DashboardComponent implements OnInit {
   configurarGraficoPizza() {
     this.dashService.lancamentosPorCategoria()
       .then((response: any) => {
-        console.log("#GraficoPizza", response);
         this.pieChartData = {
           labels: response.map(dado => dado.categoria.nome),
           datasets: [
@@ -61,7 +60,6 @@ export class DashboardComponent implements OnInit {
   lancamentosPordia() {
     this.dashService.lancamentosPorDia().subscribe(
       (reesponse: any) => {
-        console.log("Response Grafico: ", reesponse);
         this.converterStringParaDatas(reesponse);
         const diasDoMes = this.configurarDiasDoMes();
         const totaisReceitas = this.totaisPorCadaDiaMes(reesponse.filter(resp => resp.tipoLancamento === "RECEITA"), diasDoMes);
@@ -125,7 +123,6 @@ export class DashboardComponent implements OnInit {
   private converterStringParaDatas(dados: Array<any>) {
     for (const dado of dados) {
       dado.dia = moment(dado.dia, "YYYY-MM-DD").toDate();
-      console.log("Dados# ", dado);
     }
 
   }
