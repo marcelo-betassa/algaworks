@@ -122,7 +122,7 @@ export class DashboardComponent implements OnInit {
 
   private converterStringParaDatas(dados: Array<any>) {
     for (const dado of dados) {
-      dado.dia = moment(dado.dia, "YYYY-MM-DD").toDate();
+      dado.dia = moment(dado.dia, "YYYY-MM-DD", "YYYY-MM-DD").toDate();
     }
 
   }

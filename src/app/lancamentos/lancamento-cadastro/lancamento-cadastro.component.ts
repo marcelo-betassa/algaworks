@@ -108,10 +108,11 @@ export class LancamentoCadastroComponent implements OnInit {
       (response: any) => {
         console.log(this.formulario.value);
         this.toasty.success("Lancamento adicionado com sucesso!");
+        this.router.navigate(["/lancamentos", response.codigo]);
         // form.reset();
         // this.lancamento = new Lancamento();
         // this.lancamento.tipoLancamento = "RECEITA";
-        this.router.navigate(["/lancamentos", response.codigo]);
+
       },
       (error: any) => {
         console.log(this.formulario.value);
