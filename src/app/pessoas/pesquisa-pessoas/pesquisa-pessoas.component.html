@@ -36,8 +36,8 @@
         <ng-template pTemplate="body" let-pessoa>
           <tr>
             <td class="col-data-content">{{pessoa.nome}}</td>
-            <td class="col-data-content">{{pessoa.endereco?.cidade}}</td>
-            <td class="col-data-content">{{pessoa.endereco?.estado}}</td>
+            <td class="col-data-content">{{pessoa.endereco?.cidade?.nome}}</td>
+            <td class="col-data-content">{{pessoa.endereco?.cidade?.estado?.nome}}</td>
             <td class="col-data-content"><a class="status" href="javascript:;" pTooltip="{{pessoa.ativo ? 'Desativar' : 'Ativar'}}"
                 tootipPosition="top" (click)="mudarStatus(pessoa.codigo , pessoa.ativo )">{{pessoa.ativo ? 'Ativo':'Inativo'}}</a></td>
             <td class="col-acoes">
