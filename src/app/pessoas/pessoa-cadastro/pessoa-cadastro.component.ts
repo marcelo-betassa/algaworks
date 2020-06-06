@@ -17,6 +17,9 @@ export class PessoaCadastroComponent implements OnInit {
   cep: any;
   pessoa = new Pessoa();
   contato: Contato;
+  estadoSelecionado: number;
+  estados: any[];
+  cidades: any[];
 
   constructor(
     private pessoaService: PessoaService,
@@ -33,6 +36,7 @@ export class PessoaCadastroComponent implements OnInit {
     if (codigoPessoa) {
       this.carregarPessoaPorCodigo(codigoPessoa);
     }
+    this.carregarEstados();
   }
 
   salvar(form: NgForm) {
@@ -101,6 +105,29 @@ export class PessoaCadastroComponent implements OnInit {
 
   get editando() {
     return Boolean(this.pessoa.codigo);
+  }
+
+  carregarEstados() {
+    this.pessoaService.listarEstados().subscribe(
+      (response: any) => {
+        this.estados = response.map( uf => ({ label: uf.nome, value: uf.codigo}));
+      },
+      (error: any) => {
+        this.errorHandler.handle(error);
+      }
+    );
+  }
+
+  carregarCidades() {
+    this.pessoaService.pesquisarCidades(this.estadoSelecionado).subscribe(
+      (response: any) => {
+        this.cidades = response.map( c => ({ label: c.nome, value: c.codigo}));
+      },
+      (error: any) => {
+        this.errorHandler.handle(error);
+      }
+    );
+
   }
 
 }

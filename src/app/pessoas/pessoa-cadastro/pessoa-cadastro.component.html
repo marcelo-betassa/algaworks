@@ -35,14 +35,13 @@
         <app-message *ngIf="cepIsNotZero()" [control]="cep" error="required" text="Informe o CEP."></app-message>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label for="cidade">Cidade</label>
-        <input pInputText type="text" name="cidade" id="cidade" required [(ngModel)]="pessoa.endereco.cidade" #cidade="ngModel">
-        <app-message [control]="cidade" error="required" text="Informe a cidade."></app-message>
+          <label for="estado">Estado</label>
+          <p-dropdown id="estado" placeholder="Selecione" [filter]="true" [options]="estados"
+          [(ngModel)]="estadoSelecionado" (onChange)="carregarCidades()" name="estadoSelecionado"></p-dropdown>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label for="estado">Estado</label>
-        <input pInputText type="text" name="estado" id="estado" required [(ngModel)]="pessoa.endereco.estado" #estado="ngModel">
-        <app-message [control]="estado" error="required" text="Informe o estado."></app-message>
+        <label for="cidade">Cidade</label>
+        <p-dropdown id="cidade" placeholder="Selecione" [filter]="true" [options]="cidades"></p-dropdown>
       </div>
       <div class="ui-g-12 ui-md6 ui-fluid">
         <p-panel header="Contatos">
