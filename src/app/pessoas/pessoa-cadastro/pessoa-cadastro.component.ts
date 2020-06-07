@@ -86,6 +86,10 @@ export class PessoaCadastroComponent implements OnInit {
       (response: any) => {
         this.pessoa = response;
         this.atualizaTitle();
+        this.estadoSelecionado = (this.pessoa.endereco.cidade) ? this.pessoa.endereco.cidade.estado.codigo : null;
+        if (this.estadoSelecionado) {
+          this.carregarCidades();
+        }
       },
       (error: any) => {
         this.errorHandler.handle(error);

@@ -1,5 +1,5 @@
 <div class="container">
-  <form #pessoaForm="ngForm" (ngSubmit)="salvar(pessoaForm)" >
+  <form #pessoaForm="ngForm" (ngSubmit)="salvar(pessoaForm)">
     <div class="ui-g">
       <div class="ui-g-12">
         <h1>{{ editando ? "Edição de ": "Nova " }} Pessoa</h1>
@@ -32,16 +32,19 @@
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label for="cep">CEP</label>
         <p-inputMask mask="99999-999" slotChar="" placeholder="00000-000" name="cep" id="cep" required [(ngModel)]="pessoa.endereco.cep" #cep="ngModel"></p-inputMask>
-        <app-message *ngIf="cepIsNotZero()" [control]="cep" error="required" text="Informe o CEP."></app-message>
+        <app-message [control]="cep" error="required" text="Informe o CEP."></app-message>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
           <label for="estado">Estado</label>
           <p-dropdown id="estado" placeholder="Selecione" [filter]="true" [options]="estados"
-          [(ngModel)]="estadoSelecionado" (onChange)="carregarCidades()" name="estadoSelecionado"></p-dropdown>
+          [(ngModel)]="estadoSelecionado" (onChange)="carregarCidades()" name="estadoSelecionado" #estado="ngModel" required></p-dropdown>
+          <app-message [control]="estado" error="required" text="Informe o Estado."></app-message>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label for="cidade">Cidade</label>
-        <p-dropdown id="cidade" placeholder="Selecione" [filter]="true" [options]="cidades"></p-dropdown>
+        <p-dropdown id="cidade" name="cidade" placeholder="Selecione" [filter]="true"
+        [(ngModel)]="pessoa.endereco.cidade.codigo" #cidade="ngModel" [options]="cidades" [disabled]="!estadoSelecionado" required></p-dropdown>
+        <app-message [control]="cidade" error="required" text="Informe a Cidade."></app-message>
       </div>
       <div class="ui-g-12 ui-md6 ui-fluid">
         <p-panel header="Contatos">
