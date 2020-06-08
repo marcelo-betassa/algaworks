@@ -38,7 +38,6 @@ export class PesquisaPessoasComponent implements OnInit {
     this.pessoaService.pesquisaPessoa(this.pFiltro).subscribe(
       (response: any) => {
         const pessoas = response.content;
-        console.log("# Pessoas: ", pessoas);
         const result = {
           pessoas ,
           total: response.totalElements
