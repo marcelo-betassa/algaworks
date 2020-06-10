@@ -1,8 +1,8 @@
 import { Injectable, NgZone } from "@angular/core";
-import { ToastyService } from "ng2-toasty";
 import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
 import { NotAuthenticatedError } from "../seguranca/not-authenticated-error";
 import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 
 @Injectable({
   providedIn: "root"
@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 export class ErrorHandlerService {
 
   constructor(
-    private toastyService: ToastyService,
+    private toastyService: ToastrService,
     private route: Router
     ) { }
 

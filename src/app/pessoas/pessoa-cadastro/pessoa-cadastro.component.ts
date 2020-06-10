@@ -1,11 +1,11 @@
 import { Pessoa, Contato } from "./../../core/model";
 import { Component, OnInit } from "@angular/core";
 import { PessoaService } from "../pessoa.service";
-import { ToastyService } from "ng2-toasty";
 import { ErrorHandlerService } from "src/app/core/error-handler.service";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Title } from "@angular/platform-browser";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-pessoa-cadastro",
@@ -23,7 +23,7 @@ export class PessoaCadastroComponent implements OnInit {
 
   constructor(
     private pessoaService: PessoaService,
-    private toasty: ToastyService,
+    private toasty: ToastrService,
     private errorHandler: ErrorHandlerService,
     private route: ActivatedRoute,
     private router: Router,

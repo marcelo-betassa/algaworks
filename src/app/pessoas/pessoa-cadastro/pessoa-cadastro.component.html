@@ -51,10 +51,10 @@
           <app-pessoa-cadastro-contato [contatos]="pessoa.contatos"></app-pessoa-cadastro-contato>
         </p-panel>
       </div>
-      <div class="ui-g-12">
+      <div class="ui-g-12 cadastro-acoes">
         <button [disabled]="!pessoaForm.valid" pButton label="Salvar" type="submit"></button>
-        <button pButton class="margin-left ui-button-info" label="Novo" (click)="novaPessoa(pessoaForm)"></button>
-        <a class="margin-left" routerLink="/pessoas">Voltar para a pesquisa</a>
+        <button pButton class="ui-button-info" label="Novo" (click)="novaPessoa(pessoaForm)"></button>
+        <a routerLink="/pessoas">Voltar para a pesquisa</a>
       </div>
     </div>
   </form>

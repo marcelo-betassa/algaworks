@@ -5,9 +5,9 @@ import { PessoaService } from "src/app/pessoas/pessoa.service";
 import { Lancamento } from "src/app/core/model";
 import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
 import { LancamentoService } from "../lancamento.service";
-import { ToastyService } from "ng2-toasty";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Title } from "@angular/platform-browser";
+import { ToastrService } from "ngx-toastr";
 
 
 
@@ -22,7 +22,7 @@ export class LancamentoCadastroComponent implements OnInit {
     private categoriaService: CategoriaService,
     private errorHandler: ErrorHandlerService,
     private lancamentoService: LancamentoService,
-    private toasty: ToastyService,
+    private toasty: ToastrService,
     private pessoaService: PessoaService,
     private route: ActivatedRoute,
     private router: Router,

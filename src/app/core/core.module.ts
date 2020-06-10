@@ -5,7 +5,6 @@ import { registerLocaleData } from "@angular/common";
 import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ErrorHandlerService } from "./error-handler.service";
-import { ToastyModule } from "ng2-toasty";
 import { LancamentoService } from "../lancamentos/lancamento.service";
 import { PessoaService } from "../pessoas/pessoa.service";
 import { ConfirmationService } from "primeng/api";
@@ -17,6 +16,8 @@ import { AuthService } from "../seguranca/auth.service";
 import { NaoAutorizadoComponent } from "./nao-autorizado.component";
 import { DashboardService } from "../dashboard/dashboard.service";
 import { RelatoriosService } from "../relatorio/relatorios.service";
+import { ToastrModule } from "ngx-toastr";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 registerLocaleData(localePt);
 
@@ -25,13 +26,14 @@ registerLocaleData(localePt);
   imports: [
     CommonModule,
     ConfirmDialogModule,
-    ToastyModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot() ,
     RouterModule
   ],
   exports: [
     NavbarComponent,
     ConfirmDialogModule,
-    ToastyModule,
+    ToastrModule,
   ],
   providers: [
     ErrorHandlerService,

@@ -39,10 +39,10 @@
         <label for="observacao">Observação</label>
         <textarea pInputTextarea rows="3" name="observacao" id="observacao" formControlName="observacao"></textarea>
       </div>
-      <div class="ui-g-12">
+      <div class="ui-g-12 cadastro-acoes">
           <button [disabled]="formulario.invalid" pButton label="Salvar" type="submit"></button>
-          <button pButton class="margin-left ui-button-info" label="Novo" type="button" (click)="novo()" ></button>
-          <a class="margin-left nostyle" routerLink="/lancamentos">Voltar para a pesquisa</a>
+          <button pButton class="ui-button-info" label="Novo" type="button" (click)="novo()" ></button>
+          <a routerLink="/lancamentos">Voltar para a pesquisa</a>
       </div>
     </div>
   </form>

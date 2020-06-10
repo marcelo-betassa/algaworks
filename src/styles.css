@@ -73,6 +73,14 @@ a:hover , a:focus {
   text-decoration: underline;
 }
 
+a.ui-button:hover {
+  text-decoration: none;
+}
+
+.cadastro-acoes .ui-button {
+  margin-right: 8px;
+}
+
 label {
   font-weight: bold;
 }

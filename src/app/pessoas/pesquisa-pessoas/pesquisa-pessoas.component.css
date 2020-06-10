@@ -35,8 +35,8 @@ tr > td > a {
 
 }
 
-.marginLeft {
-  margin: 0 .25em!important;
+.col-acoes .ui-button {
+  margin: 0 .25em;
 }
 
 .color-texto > a {
@@ -45,4 +45,8 @@ tr > td > a {
 
 #novaPessoa.ui-button-text {
   color: #fff !important;
+}
+
+.col-data-content a:hover {
+  text-decoration: underline;
 }

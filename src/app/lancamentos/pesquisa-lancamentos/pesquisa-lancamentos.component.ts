@@ -3,10 +3,10 @@ import { LancamentoService } from "./../lancamento.service";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { LazyLoadEvent, ConfirmationService } from "primeng/api";
 import { Table } from "primeng/table/table";
-import { ToastyService } from "ng2-toasty";
 import { ErrorHandlerService } from "src/app/core/error-handler.service";
 import { Title } from "@angular/platform-browser";
 import { AuthService } from "src/app/seguranca/auth.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-pesquisa-lancamentos",
@@ -24,7 +24,7 @@ export class PesquisaLancamentosComponent implements OnInit {
 
   constructor(
     private lancamentoService: LancamentoService,
-    private toasty: ToastyService,
+    private toasty: ToastrService,
     private confirmationService: ConfirmationService,
     private errorHandler: ErrorHandlerService,
     public auth: AuthService,

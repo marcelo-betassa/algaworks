@@ -3,9 +3,9 @@ import { PessoaFiltro } from "./../pessoa-filtro";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { LazyLoadEvent, ConfirmationService } from "primeng/api";
 import { Table } from "primeng/table/table";
-import { ToastyService } from "ng2-toasty";
 import { ErrorHandlerService } from "src/app/core/error-handler.service";
 import { Title } from "@angular/platform-browser";
+import { ToastrService } from "ngx-toastr";
 
 
 @Component({
@@ -23,7 +23,7 @@ export class PesquisaPessoasComponent implements OnInit {
 
   constructor(
     private pessoaService: PessoaService,
-    private toasty: ToastyService,
+    private toasty: ToastrService,
     private confirmationService: ConfirmationService,
     private errorHandler: ErrorHandlerService,
     private title: Title

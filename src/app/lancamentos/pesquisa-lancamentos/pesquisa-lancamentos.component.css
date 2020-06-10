@@ -37,8 +37,8 @@
   text-align: center;
 
 }
-.marginLeft {
-  margin: 0 .25em!important;
+.col-acoes .ui-button {
+  margin: 0 .25em;
 }
 
 .ui-button:hover {
@@ -49,4 +49,8 @@
 .ui-button:active {
   color: #fff !important;
   background-color: #007ad9 !important;
+}
+
+.label-spaced {
+  margin: 6px;
 }
